@@ -4,6 +4,7 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
     : QWidget(parent)
 {
 	ui.setupUi(this);
+
 }
 
 YellowDolphinDownloader::~YellowDolphinDownloader()
