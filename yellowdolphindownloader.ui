@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>550</width>
-    <height>427</height>
+    <width>700</width>
+    <height>500</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="acceptDrops">
    <bool>false</bool>
@@ -29,9 +35,9 @@
       <widget class="QComboBox" name="interfacesCombo"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="searchmultimeter">
        <property name="text">
-        <string>PushButton</string>
+        <string>Search for Multimeter</string>
        </property>
       </widget>
      </item>
@@ -63,12 +69,22 @@
               <property name="text">
                <string>SAVE</string>
               </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="radioLOG">
               <property name="text">
                <string>LOG</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton">
+              <property name="text">
+               <string>Load from binary file</string>
               </property>
              </widget>
             </item>
@@ -80,6 +96,39 @@
            <property name="title">
             <string>Select Output Format</string>
            </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QRadioButton" name="radioButton_2">
+              <property name="text">
+               <string>Binary Format</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_3">
+              <property name="text">
+               <string>CSV (Full)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_4">
+              <property name="text">
+               <string>CSV (Reduced)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_5">
+              <property name="text">
+               <string>OpenOffice Calc</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -94,7 +143,22 @@
        <item>
         <widget class="QProgressBar" name="progressBar">
          <property name="value">
-          <number>24</number>
+          <number>0</number>
+         </property>
+         <property name="textVisible">
+          <bool>true</bool>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="invertedAppearance">
+          <bool>false</bool>
+         </property>
+         <property name="textDirection">
+          <enum>QProgressBar::TopToBottom</enum>
+         </property>
+         <property name="format">
+          <string>%p%</string>
          </property>
         </widget>
        </item>
@@ -104,11 +168,196 @@
       <attribute name="title">
        <string>Remote Logging</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QGraphicsView" name="graphicsView"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QGroupBox" name="outputBox_2">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>200</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="title">
+            <string>Select Output Format</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QRadioButton" name="radioButton_6">
+              <property name="text">
+               <string>Binary Format</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_7">
+              <property name="text">
+               <string>CSV (Full)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_8">
+              <property name="text">
+               <string>CSV (Reduced)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_9">
+              <property name="text">
+               <string>OpenOffice Calc</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4">
+              <item>
+               <widget class="QCheckBox" name="LogCheckBox">
+                <property name="text">
+                 <string>Enable Log</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="text">
+                 <string>Start Querying</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="maximumSize">
+            <size>
+             <width>120</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="title">
+            <string>Actual Values</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>10</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Primary Value</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit">
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>10</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>10</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Secondary Value</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_2">
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
        <string>Settings</string>
       </attribute>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>161</x>
+         <y>160</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>You cant see anything here yet :P</string>
+       </property>
+      </widget>
      </widget>
     </widget>
    </item>
