@@ -82,8 +82,7 @@ void YellowDolphinDownloader::on_downloadButton_clicked()
 	{
 		Fluke::Fluke189 FlukeMM(ui.interfacesCombo->currentText().toStdString());
 		std::cout<<"Downloading SAVE data.."<<std::endl;
-
-		Fluke::Fluke189::RCT_QD2 DATA = FlukeMM.CMD_QD2(true, this, YellowDolphinDownloader::Wrapper_to_progress_bar);
+		Fluke::Fluke189::RCT_QD4 DATA = FlukeMM.CMD_QD4(true, this, YellowDolphinDownloader::Wrapper_to_progress_bar);
 
 
 		std::cout<<DATA.Data()->I_DataCount<<std::endl;
@@ -92,6 +91,30 @@ void YellowDolphinDownloader::on_downloadButton_clicked()
 	{
 		Fluke::Fluke189 FlukeMM(ui.interfacesCombo->currentText().toStdString());
 		std::cout<<"Downloading LOG data.."<<std::endl;
+
+		Fluke::Fluke189::RCT_QD0 CURSTAT = FlukeMM.CMD_QD0(true, 0,0);
+		Fluke::Fluke189::RCT_QD2 DATA;
+		if(CURSTAT.Data()->I_S_Log)
+		{
+		    switch( QMessageBox::information( this, "YellowDolphinDownloader - Multimeter in LOG Mode!",
+		        "The Multimeter on this interface is currently in logging mode\n"
+		    	"Your download will possibly take longer,\n"
+		    	"because of junk data from previous logs.\n"
+		    	"(progress bar will not be used)\n\n"
+		        "Do you want go ahead with downloading?\n(NOT RECOMMENDED)",
+		        "&Download", "&Stop",
+		        0,      // Enter == button 0
+		        2 ) ) { // Escape == button 2
+		    case 0: // Save clicked or Alt+D pressed or Enter pressed.
+		    	DATA = FlukeMM.CMD_QD2(true, 0,0);
+		        break;
+		    }
+
+		}
+		else
+		{
+			DATA = FlukeMM.CMD_QD2(true, this, YellowDolphinDownloader::Wrapper_to_progress_bar);
+		}
 	}
 	else if(ui.radioUseBinFileDL->isChecked())
 	{
@@ -99,7 +122,7 @@ void YellowDolphinDownloader::on_downloadButton_clicked()
 	}
 	else
 	{
-	    QMessageBox::critical( this, "YellowDolphinDownloader - Error",
+	    QMessageBox::warning( this, "YellowDolphinDownloader - Error",
 	                              "There is no radioButton selected for download!\n"
 	                              "Huh? That should never happen - to resolve this select one" );
 	}

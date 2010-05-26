@@ -38,7 +38,7 @@ public:
 
     void progress_bar(unsigned int current_byte, unsigned int byte_amount)
     {
-    	if(byte_amount != 0 && current_byte != 0)
+    	if(byte_amount != 0)
     	{
     		unsigned int current_percent=(unsigned int)((double)(current_byte)/(byte_amount)*100);
     		if(current_percent > 100)
@@ -47,6 +47,11 @@ public:
     			std::cerr<<"YellowDolphinDownloader::progress_bar - Value for Progressbar > 100% !!!";
     		}
     		ui.progressBar->setValue(current_percent);
+
+    	}
+    	else
+    	{
+    		ui.progressBar->setValue(1);
     	}
     }
 
