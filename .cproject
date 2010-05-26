@@ -114,6 +114,7 @@
 </target>
 </buildTargets>
 </storageModule>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.pathentry">
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="" kind="inc" path="" system="true"/>
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="QtTest" kind="inc" path="" system="true"/>
@@ -141,6 +142,17 @@
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="QtGui" kind="inc" path="" system="true"/>
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="ActiveQt" kind="inc" path="" system="true"/>
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="Qt3Support" kind="inc" path="" system="true"/>
+<pathentry base-path="LibFluke" include="src" kind="inc" path="" system="true"/>
+<pathentry base-path="LibSerialDevice" include="src" kind="inc" path="" system="true"/>
+<pathentry base-path="LibCalTime" include="src" kind="inc" path="" system="true"/>
+<pathentry kind="src" path=""/>
+<pathentry kind="out" path=""/>
+<pathentry kind="lib" library="/home/cyborg-x1/Entwicklung/EclipseCPP/LibCalTime/Debug/libCalTime.so" path=""/>
+<pathentry kind="lib" library="/home/cyborg-x1/Entwicklung/EclipseCPP/LibFluke/Debug/libFluke.so" path=""/>
+<pathentry kind="lib" library="/home/cyborg-x1/Entwicklung/EclipseCPP/LibSerialDevice/Debug/libSerialDevice.so" path=""/>
+<pathentry kind="prj" path="/LibSerialDevice"/>
+<pathentry kind="prj" path="/LibFluke"/>
+<pathentry kind="prj" path="/LibCalTime"/>
 </storageModule>
 </cconfiguration>
 </storageModule>

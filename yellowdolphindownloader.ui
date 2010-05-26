@@ -32,7 +32,13 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QComboBox" name="interfacesCombo"/>
+      <widget class="QComboBox" name="interfacesCombo">
+       <item>
+        <property name="text">
+         <string>No serial found</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="searchmultimeter">

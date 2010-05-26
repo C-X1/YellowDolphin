@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Tue May 25 23:41:49 2010
+** Created: Wed May 26 01:13:17 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -187,7 +187,11 @@ public:
 
         progressBar = new QProgressBar(tab);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
-        progressBar->setValue(24);
+        progressBar->setValue(0);
+        progressBar->setTextVisible(true);
+        progressBar->setOrientation(Qt::Horizontal);
+        progressBar->setInvertedAppearance(false);
+        progressBar->setTextDirection(QProgressBar::TopToBottom);
 
         verticalLayout_3->addWidget(progressBar);
 
@@ -313,7 +317,7 @@ public:
 
         retranslateUi(YellowDolphinDownloaderClass);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(YellowDolphinDownloaderClass);
@@ -322,6 +326,10 @@ public:
     void retranslateUi(QWidget *YellowDolphinDownloaderClass)
     {
         YellowDolphinDownloaderClass->setWindowTitle(QApplication::translate("YellowDolphinDownloaderClass", "YellowDolphinDownloader", 0, QApplication::UnicodeUTF8));
+        interfacesCombo->clear();
+        interfacesCombo->insertItems(0, QStringList()
+         << QApplication::translate("YellowDolphinDownloaderClass", "No serial found", 0, QApplication::UnicodeUTF8)
+        );
         searchmultimeter->setText(QApplication::translate("YellowDolphinDownloaderClass", "Search for Multimeter", 0, QApplication::UnicodeUTF8));
         downloadSelect->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Data Source", 0, QApplication::UnicodeUTF8));
         radioSAVE->setText(QApplication::translate("YellowDolphinDownloaderClass", "SAVE", 0, QApplication::UnicodeUTF8));
@@ -333,6 +341,7 @@ public:
         radioButton_4->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Reduced)", 0, QApplication::UnicodeUTF8));
         radioButton_5->setText(QApplication::translate("YellowDolphinDownloaderClass", "OpenOffice Calc", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("YellowDolphinDownloaderClass", "Download", 0, QApplication::UnicodeUTF8));
+        progressBar->setFormat(QApplication::translate("YellowDolphinDownloaderClass", "%p%", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("YellowDolphinDownloaderClass", "Download Data", 0, QApplication::UnicodeUTF8));
         outputBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Output Format", 0, QApplication::UnicodeUTF8));
         radioButton_6->setText(QApplication::translate("YellowDolphinDownloaderClass", "Binary Format", 0, QApplication::UnicodeUTF8));

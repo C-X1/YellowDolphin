@@ -3,6 +3,9 @@
 
 #include <QtGui/QWidget>
 #include "ui_yellowdolphindownloader.h"
+#include "CalTime.hpp"
+#include "Fluke189.hpp"
+
 
 class YellowDolphinDownloader : public QWidget
 {
@@ -14,6 +17,7 @@ public:
 
 private:
     Ui::YellowDolphinDownloaderClass ui;
+
 };
 
 #endif // YELLOWDOLPHINDOWNLOADER_H
