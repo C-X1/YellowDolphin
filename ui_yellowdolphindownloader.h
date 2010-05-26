@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Wed May 26 02:27:47 2010
+** Created: Thu May 27 00:50:47 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -44,18 +44,18 @@ public:
     QWidget *tab;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_2;
-    QGroupBox *downloadSelect;
+    QGroupBox *downloadSelectBox;
     QVBoxLayout *verticalLayout_2;
-    QRadioButton *radioSAVE;
-    QRadioButton *radioLOG;
-    QRadioButton *radioButton;
-    QGroupBox *outputBox;
+    QRadioButton *radioDownloadSave;
+    QRadioButton *radioDownloadLog;
+    QRadioButton *radioUseBinFileDL;
+    QGroupBox *downloadOutputBox;
     QVBoxLayout *verticalLayout_4;
-    QRadioButton *radioButton_2;
-    QRadioButton *radioButton_3;
-    QRadioButton *radioButton_4;
-    QRadioButton *radioButton_5;
-    QPushButton *pushButton;
+    QRadioButton *radioDownload2Bin;
+    QRadioButton *radioDownload2CSVF;
+    QRadioButton *radioDownload2CSVR;
+    QRadioButton *radioDownload2OO;
+    QPushButton *downloadButton;
     QProgressBar *progressBar;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_6;
@@ -79,7 +79,9 @@ public:
     QLineEdit *lineEdit_2;
     QSpacerItem *verticalSpacer;
     QWidget *tab_3;
-    QLabel *label_3;
+    QVBoxLayout *verticalLayout_8;
+    QPushButton *refreshInterfacesBut;
+    QGroupBox *groupBox_2;
 
     void setupUi(QWidget *YellowDolphinDownloaderClass)
     {
@@ -99,6 +101,8 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         interfacesCombo = new QComboBox(YellowDolphinDownloaderClass);
         interfacesCombo->setObjectName(QString::fromUtf8("interfacesCombo"));
+        interfacesCombo->setMouseTracking(true);
+        interfacesCombo->setEditable(true);
 
         horizontalLayout->addWidget(interfacesCombo);
 
@@ -122,68 +126,68 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        downloadSelect = new QGroupBox(tab);
-        downloadSelect->setObjectName(QString::fromUtf8("downloadSelect"));
-        verticalLayout_2 = new QVBoxLayout(downloadSelect);
+        downloadSelectBox = new QGroupBox(tab);
+        downloadSelectBox->setObjectName(QString::fromUtf8("downloadSelectBox"));
+        verticalLayout_2 = new QVBoxLayout(downloadSelectBox);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        radioSAVE = new QRadioButton(downloadSelect);
-        radioSAVE->setObjectName(QString::fromUtf8("radioSAVE"));
-        radioSAVE->setChecked(true);
+        radioDownloadSave = new QRadioButton(downloadSelectBox);
+        radioDownloadSave->setObjectName(QString::fromUtf8("radioDownloadSave"));
+        radioDownloadSave->setChecked(true);
 
-        verticalLayout_2->addWidget(radioSAVE);
+        verticalLayout_2->addWidget(radioDownloadSave);
 
-        radioLOG = new QRadioButton(downloadSelect);
-        radioLOG->setObjectName(QString::fromUtf8("radioLOG"));
+        radioDownloadLog = new QRadioButton(downloadSelectBox);
+        radioDownloadLog->setObjectName(QString::fromUtf8("radioDownloadLog"));
 
-        verticalLayout_2->addWidget(radioLOG);
+        verticalLayout_2->addWidget(radioDownloadLog);
 
-        radioButton = new QRadioButton(downloadSelect);
-        radioButton->setObjectName(QString::fromUtf8("radioButton"));
+        radioUseBinFileDL = new QRadioButton(downloadSelectBox);
+        radioUseBinFileDL->setObjectName(QString::fromUtf8("radioUseBinFileDL"));
 
-        verticalLayout_2->addWidget(radioButton);
+        verticalLayout_2->addWidget(radioUseBinFileDL);
 
 
-        horizontalLayout_2->addWidget(downloadSelect);
+        horizontalLayout_2->addWidget(downloadSelectBox);
 
-        outputBox = new QGroupBox(tab);
-        outputBox->setObjectName(QString::fromUtf8("outputBox"));
-        verticalLayout_4 = new QVBoxLayout(outputBox);
+        downloadOutputBox = new QGroupBox(tab);
+        downloadOutputBox->setObjectName(QString::fromUtf8("downloadOutputBox"));
+        verticalLayout_4 = new QVBoxLayout(downloadOutputBox);
         verticalLayout_4->setSpacing(6);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        radioButton_2 = new QRadioButton(outputBox);
-        radioButton_2->setObjectName(QString::fromUtf8("radioButton_2"));
-        radioButton_2->setChecked(true);
+        radioDownload2Bin = new QRadioButton(downloadOutputBox);
+        radioDownload2Bin->setObjectName(QString::fromUtf8("radioDownload2Bin"));
+        radioDownload2Bin->setChecked(true);
 
-        verticalLayout_4->addWidget(radioButton_2);
+        verticalLayout_4->addWidget(radioDownload2Bin);
 
-        radioButton_3 = new QRadioButton(outputBox);
-        radioButton_3->setObjectName(QString::fromUtf8("radioButton_3"));
+        radioDownload2CSVF = new QRadioButton(downloadOutputBox);
+        radioDownload2CSVF->setObjectName(QString::fromUtf8("radioDownload2CSVF"));
 
-        verticalLayout_4->addWidget(radioButton_3);
+        verticalLayout_4->addWidget(radioDownload2CSVF);
 
-        radioButton_4 = new QRadioButton(outputBox);
-        radioButton_4->setObjectName(QString::fromUtf8("radioButton_4"));
+        radioDownload2CSVR = new QRadioButton(downloadOutputBox);
+        radioDownload2CSVR->setObjectName(QString::fromUtf8("radioDownload2CSVR"));
 
-        verticalLayout_4->addWidget(radioButton_4);
+        verticalLayout_4->addWidget(radioDownload2CSVR);
 
-        radioButton_5 = new QRadioButton(outputBox);
-        radioButton_5->setObjectName(QString::fromUtf8("radioButton_5"));
+        radioDownload2OO = new QRadioButton(downloadOutputBox);
+        radioDownload2OO->setObjectName(QString::fromUtf8("radioDownload2OO"));
 
-        verticalLayout_4->addWidget(radioButton_5);
+        verticalLayout_4->addWidget(radioDownload2OO);
 
 
-        horizontalLayout_2->addWidget(outputBox);
+        horizontalLayout_2->addWidget(downloadOutputBox);
 
 
         verticalLayout_3->addLayout(horizontalLayout_2);
 
-        pushButton = new QPushButton(tab);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        downloadButton = new QPushButton(tab);
+        downloadButton->setObjectName(QString::fromUtf8("downloadButton"));
 
-        verticalLayout_3->addWidget(pushButton);
+        verticalLayout_3->addWidget(downloadButton);
 
         progressBar = new QProgressBar(tab);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
@@ -307,24 +311,35 @@ public:
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
-        label_3 = new QLabel(tab_3);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(161, 160, 191, 31));
+        verticalLayout_8 = new QVBoxLayout(tab_3);
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
+        refreshInterfacesBut = new QPushButton(tab_3);
+        refreshInterfacesBut->setObjectName(QString::fromUtf8("refreshInterfacesBut"));
+
+        verticalLayout_8->addWidget(refreshInterfacesBut);
+
+        groupBox_2 = new QGroupBox(tab_3);
+        groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
+
+        verticalLayout_8->addWidget(groupBox_2);
+
         tabWidget->addTab(tab_3, QString());
 
         verticalLayout->addWidget(tabWidget);
 
         QWidget::setTabOrder(interfacesCombo, searchmultimeter);
         QWidget::setTabOrder(searchmultimeter, tabWidget);
-        QWidget::setTabOrder(tabWidget, radioSAVE);
-        QWidget::setTabOrder(radioSAVE, radioLOG);
-        QWidget::setTabOrder(radioLOG, radioButton);
-        QWidget::setTabOrder(radioButton, radioButton_2);
-        QWidget::setTabOrder(radioButton_2, radioButton_3);
-        QWidget::setTabOrder(radioButton_3, radioButton_4);
-        QWidget::setTabOrder(radioButton_4, radioButton_5);
-        QWidget::setTabOrder(radioButton_5, pushButton);
-        QWidget::setTabOrder(pushButton, radioButton_6);
+        QWidget::setTabOrder(tabWidget, radioDownloadSave);
+        QWidget::setTabOrder(radioDownloadSave, radioDownloadLog);
+        QWidget::setTabOrder(radioDownloadLog, radioUseBinFileDL);
+        QWidget::setTabOrder(radioUseBinFileDL, radioDownload2Bin);
+        QWidget::setTabOrder(radioDownload2Bin, radioDownload2CSVF);
+        QWidget::setTabOrder(radioDownload2CSVF, radioDownload2CSVR);
+        QWidget::setTabOrder(radioDownload2CSVR, radioDownload2OO);
+        QWidget::setTabOrder(radioDownload2OO, downloadButton);
+        QWidget::setTabOrder(downloadButton, radioButton_6);
         QWidget::setTabOrder(radioButton_6, radioButton_7);
         QWidget::setTabOrder(radioButton_7, radioButton_8);
         QWidget::setTabOrder(radioButton_8, radioButton_9);
@@ -350,16 +365,16 @@ public:
          << QApplication::translate("YellowDolphinDownloaderClass", "No serial found", 0, QApplication::UnicodeUTF8)
         );
         searchmultimeter->setText(QApplication::translate("YellowDolphinDownloaderClass", "Search for Multimeter", 0, QApplication::UnicodeUTF8));
-        downloadSelect->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Data Source", 0, QApplication::UnicodeUTF8));
-        radioSAVE->setText(QApplication::translate("YellowDolphinDownloaderClass", "SAVE", 0, QApplication::UnicodeUTF8));
-        radioLOG->setText(QApplication::translate("YellowDolphinDownloaderClass", "LOG", 0, QApplication::UnicodeUTF8));
-        radioButton->setText(QApplication::translate("YellowDolphinDownloaderClass", "Load from binary file", 0, QApplication::UnicodeUTF8));
-        outputBox->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Output Format", 0, QApplication::UnicodeUTF8));
-        radioButton_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "Binary Format", 0, QApplication::UnicodeUTF8));
-        radioButton_3->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Full)", 0, QApplication::UnicodeUTF8));
-        radioButton_4->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Reduced)", 0, QApplication::UnicodeUTF8));
-        radioButton_5->setText(QApplication::translate("YellowDolphinDownloaderClass", "OpenOffice Calc", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("YellowDolphinDownloaderClass", "Download", 0, QApplication::UnicodeUTF8));
+        downloadSelectBox->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Data Source", 0, QApplication::UnicodeUTF8));
+        radioDownloadSave->setText(QApplication::translate("YellowDolphinDownloaderClass", "SAVE", 0, QApplication::UnicodeUTF8));
+        radioDownloadLog->setText(QApplication::translate("YellowDolphinDownloaderClass", "LOG", 0, QApplication::UnicodeUTF8));
+        radioUseBinFileDL->setText(QApplication::translate("YellowDolphinDownloaderClass", "Load from binary file", 0, QApplication::UnicodeUTF8));
+        downloadOutputBox->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Output Format", 0, QApplication::UnicodeUTF8));
+        radioDownload2Bin->setText(QApplication::translate("YellowDolphinDownloaderClass", "Binary Format", 0, QApplication::UnicodeUTF8));
+        radioDownload2CSVF->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Full)", 0, QApplication::UnicodeUTF8));
+        radioDownload2CSVR->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Reduced)", 0, QApplication::UnicodeUTF8));
+        radioDownload2OO->setText(QApplication::translate("YellowDolphinDownloaderClass", "OpenOffice (Calc)", 0, QApplication::UnicodeUTF8));
+        downloadButton->setText(QApplication::translate("YellowDolphinDownloaderClass", "Download", 0, QApplication::UnicodeUTF8));
         progressBar->setFormat(QApplication::translate("YellowDolphinDownloaderClass", "%p%", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("YellowDolphinDownloaderClass", "Download Data", 0, QApplication::UnicodeUTF8));
         outputBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Output Format", 0, QApplication::UnicodeUTF8));
@@ -373,7 +388,8 @@ public:
         label->setText(QApplication::translate("YellowDolphinDownloaderClass", "Primary Value", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "Secondary Value", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("YellowDolphinDownloaderClass", "Remote Logging", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("YellowDolphinDownloaderClass", "You cant see anything here yet :P", 0, QApplication::UnicodeUTF8));
+        refreshInterfacesBut->setText(QApplication::translate("YellowDolphinDownloaderClass", "Refresh Interfaces", 0, QApplication::UnicodeUTF8));
+        groupBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Multimeter Settings", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("YellowDolphinDownloaderClass", "Settings", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

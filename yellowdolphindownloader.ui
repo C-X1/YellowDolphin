@@ -33,6 +33,12 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QComboBox" name="interfacesCombo">
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="editable">
+        <bool>true</bool>
+       </property>
        <item>
         <property name="text">
          <string>No serial found</string>
@@ -65,13 +71,13 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QGroupBox" name="downloadSelect">
+          <widget class="QGroupBox" name="downloadSelectBox">
            <property name="title">
             <string>Select Data Source</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QRadioButton" name="radioSAVE">
+             <widget class="QRadioButton" name="radioDownloadSave">
               <property name="text">
                <string>SAVE</string>
               </property>
@@ -81,14 +87,14 @@
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioLOG">
+             <widget class="QRadioButton" name="radioDownloadLog">
               <property name="text">
                <string>LOG</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton">
+             <widget class="QRadioButton" name="radioUseBinFileDL">
               <property name="text">
                <string>Load from binary file</string>
               </property>
@@ -98,13 +104,13 @@
           </widget>
          </item>
          <item>
-          <widget class="QGroupBox" name="outputBox">
+          <widget class="QGroupBox" name="downloadOutputBox">
            <property name="title">
             <string>Select Output Format</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <item>
-             <widget class="QRadioButton" name="radioButton_2">
+             <widget class="QRadioButton" name="radioDownload2Bin">
               <property name="text">
                <string>Binary Format</string>
               </property>
@@ -114,23 +120,23 @@
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_3">
+             <widget class="QRadioButton" name="radioDownload2CSVF">
               <property name="text">
                <string>CSV (Full)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_4">
+             <widget class="QRadioButton" name="radioDownload2CSVR">
               <property name="text">
                <string>CSV (Reduced)</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_5">
+             <widget class="QRadioButton" name="radioDownload2OO">
               <property name="text">
-               <string>OpenOffice Calc</string>
+               <string>OpenOffice (Calc)</string>
               </property>
              </widget>
             </item>
@@ -140,7 +146,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="downloadButton">
          <property name="text">
           <string>Download</string>
          </property>
@@ -351,19 +357,22 @@
       <attribute name="title">
        <string>Settings</string>
       </attribute>
-      <widget class="QLabel" name="label_3">
-       <property name="geometry">
-        <rect>
-         <x>161</x>
-         <y>160</y>
-         <width>191</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>You cant see anything here yet :P</string>
-       </property>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout_8">
+       <item>
+        <widget class="QPushButton" name="refreshInterfacesBut">
+         <property name="text">
+          <string>Refresh Interfaces</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Multimeter Settings</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
@@ -374,14 +383,14 @@
   <tabstop>interfacesCombo</tabstop>
   <tabstop>searchmultimeter</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>radioSAVE</tabstop>
-  <tabstop>radioLOG</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>radioButton_2</tabstop>
-  <tabstop>radioButton_3</tabstop>
-  <tabstop>radioButton_4</tabstop>
-  <tabstop>radioButton_5</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>radioDownloadSave</tabstop>
+  <tabstop>radioDownloadLog</tabstop>
+  <tabstop>radioUseBinFileDL</tabstop>
+  <tabstop>radioDownload2Bin</tabstop>
+  <tabstop>radioDownload2CSVF</tabstop>
+  <tabstop>radioDownload2CSVR</tabstop>
+  <tabstop>radioDownload2OO</tabstop>
+  <tabstop>downloadButton</tabstop>
   <tabstop>radioButton_6</tabstop>
   <tabstop>radioButton_7</tabstop>
   <tabstop>radioButton_8</tabstop>
