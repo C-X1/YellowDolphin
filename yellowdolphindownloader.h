@@ -18,6 +18,10 @@ public:
 private:
     Ui::YellowDolphinDownloaderClass ui;
 
+
+private slots:
+    void on_searchmultimeter_clicked();
 };
+
 
 #endif // YELLOWDOLPHINDOWNLOADER_H

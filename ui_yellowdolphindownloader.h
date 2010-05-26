@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Wed May 26 01:13:17 2010
+** Created: Wed May 26 02:27:47 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -314,6 +314,25 @@ public:
 
         verticalLayout->addWidget(tabWidget);
 
+        QWidget::setTabOrder(interfacesCombo, searchmultimeter);
+        QWidget::setTabOrder(searchmultimeter, tabWidget);
+        QWidget::setTabOrder(tabWidget, radioSAVE);
+        QWidget::setTabOrder(radioSAVE, radioLOG);
+        QWidget::setTabOrder(radioLOG, radioButton);
+        QWidget::setTabOrder(radioButton, radioButton_2);
+        QWidget::setTabOrder(radioButton_2, radioButton_3);
+        QWidget::setTabOrder(radioButton_3, radioButton_4);
+        QWidget::setTabOrder(radioButton_4, radioButton_5);
+        QWidget::setTabOrder(radioButton_5, pushButton);
+        QWidget::setTabOrder(pushButton, radioButton_6);
+        QWidget::setTabOrder(radioButton_6, radioButton_7);
+        QWidget::setTabOrder(radioButton_7, radioButton_8);
+        QWidget::setTabOrder(radioButton_8, radioButton_9);
+        QWidget::setTabOrder(radioButton_9, LogCheckBox);
+        QWidget::setTabOrder(LogCheckBox, pushButton_3);
+        QWidget::setTabOrder(pushButton_3, lineEdit);
+        QWidget::setTabOrder(lineEdit, lineEdit_2);
+        QWidget::setTabOrder(lineEdit_2, graphicsView);
 
         retranslateUi(YellowDolphinDownloaderClass);
 

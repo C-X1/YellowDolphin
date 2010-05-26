@@ -15,4 +15,4 @@ INCLUDEPATH += ../LibFluke/src \
 
 LIBS += ../LibFluke/Debug/libFluke.so \
     ../LibCalTime/Debug/libCalTime.so \
-    ../LibSerialDevice/Debug/libSerialDevice.so \
+    ../LibSerialDevice/Debug/libSerialDevice.so

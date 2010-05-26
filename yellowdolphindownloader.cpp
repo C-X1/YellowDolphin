@@ -11,3 +11,8 @@ YellowDolphinDownloader::~YellowDolphinDownloader()
 {
 
 }
+
+void YellowDolphinDownloader::on_searchmultimeter_clicked()
+{
+
+}
