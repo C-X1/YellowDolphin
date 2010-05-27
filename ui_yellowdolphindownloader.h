@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Thu May 27 01:31:02 2010
+** Created: Thu May 27 23:43:55 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -41,7 +41,7 @@ public:
     QComboBox *interfacesCombo;
     QPushButton *searchmultimeter;
     QTabWidget *tabWidget;
-    QWidget *tab;
+    QWidget *tab_download;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_2;
     QGroupBox *downloadSelectBox;
@@ -57,7 +57,7 @@ public:
     QRadioButton *radioDownload2OO;
     QPushButton *downloadButton;
     QProgressBar *progressBar;
-    QWidget *tab_2;
+    QWidget *tab_remote;
     QVBoxLayout *verticalLayout_6;
     QGraphicsView *graphicsView;
     QHBoxLayout *horizontalLayout_3;
@@ -78,7 +78,7 @@ public:
     QLabel *label_2;
     QLineEdit *lineEdit_2;
     QSpacerItem *verticalSpacer;
-    QWidget *tab_3;
+    QWidget *tab_settings;
     QVBoxLayout *verticalLayout_8;
     QPushButton *refreshInterfacesBut;
     QGroupBox *groupBox_2;
@@ -117,16 +117,16 @@ public:
         tabWidget = new QTabWidget(YellowDolphinDownloaderClass);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setTabPosition(QTabWidget::West);
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        verticalLayout_3 = new QVBoxLayout(tab);
+        tab_download = new QWidget();
+        tab_download->setObjectName(QString::fromUtf8("tab_download"));
+        verticalLayout_3 = new QVBoxLayout(tab_download);
         verticalLayout_3->setSpacing(6);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        downloadSelectBox = new QGroupBox(tab);
+        downloadSelectBox = new QGroupBox(tab_download);
         downloadSelectBox->setObjectName(QString::fromUtf8("downloadSelectBox"));
         verticalLayout_2 = new QVBoxLayout(downloadSelectBox);
         verticalLayout_2->setSpacing(6);
@@ -151,7 +151,7 @@ public:
 
         horizontalLayout_2->addWidget(downloadSelectBox);
 
-        downloadOutputBox = new QGroupBox(tab);
+        downloadOutputBox = new QGroupBox(tab_download);
         downloadOutputBox->setObjectName(QString::fromUtf8("downloadOutputBox"));
         verticalLayout_4 = new QVBoxLayout(downloadOutputBox);
         verticalLayout_4->setSpacing(6);
@@ -184,12 +184,12 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_2);
 
-        downloadButton = new QPushButton(tab);
+        downloadButton = new QPushButton(tab_download);
         downloadButton->setObjectName(QString::fromUtf8("downloadButton"));
 
         verticalLayout_3->addWidget(downloadButton);
 
-        progressBar = new QProgressBar(tab);
+        progressBar = new QProgressBar(tab_download);
         progressBar->setObjectName(QString::fromUtf8("progressBar"));
         progressBar->setValue(0);
         progressBar->setTextVisible(true);
@@ -199,14 +199,14 @@ public:
 
         verticalLayout_3->addWidget(progressBar);
 
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        verticalLayout_6 = new QVBoxLayout(tab_2);
+        tabWidget->addTab(tab_download, QString());
+        tab_remote = new QWidget();
+        tab_remote->setObjectName(QString::fromUtf8("tab_remote"));
+        verticalLayout_6 = new QVBoxLayout(tab_remote);
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setContentsMargins(11, 11, 11, 11);
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        graphicsView = new QGraphicsView(tab_2);
+        graphicsView = new QGraphicsView(tab_remote);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
 
         verticalLayout_6->addWidget(graphicsView);
@@ -214,7 +214,7 @@ public:
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        outputBox_2 = new QGroupBox(tab_2);
+        outputBox_2 = new QGroupBox(tab_remote);
         outputBox_2->setObjectName(QString::fromUtf8("outputBox_2"));
         outputBox_2->setMinimumSize(QSize(200, 200));
         outputBox_2->setMaximumSize(QSize(200, 200));
@@ -266,7 +266,7 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer);
 
-        groupBox = new QGroupBox(tab_2);
+        groupBox = new QGroupBox(tab_remote);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setMaximumSize(QSize(120, 200));
         verticalLayout_7 = new QVBoxLayout(groupBox);
@@ -308,24 +308,24 @@ public:
 
         verticalLayout_6->addLayout(horizontalLayout_3);
 
-        tabWidget->addTab(tab_2, QString());
-        tab_3 = new QWidget();
-        tab_3->setObjectName(QString::fromUtf8("tab_3"));
-        verticalLayout_8 = new QVBoxLayout(tab_3);
+        tabWidget->addTab(tab_remote, QString());
+        tab_settings = new QWidget();
+        tab_settings->setObjectName(QString::fromUtf8("tab_settings"));
+        verticalLayout_8 = new QVBoxLayout(tab_settings);
         verticalLayout_8->setSpacing(6);
         verticalLayout_8->setContentsMargins(11, 11, 11, 11);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        refreshInterfacesBut = new QPushButton(tab_3);
+        refreshInterfacesBut = new QPushButton(tab_settings);
         refreshInterfacesBut->setObjectName(QString::fromUtf8("refreshInterfacesBut"));
 
         verticalLayout_8->addWidget(refreshInterfacesBut);
 
-        groupBox_2 = new QGroupBox(tab_3);
+        groupBox_2 = new QGroupBox(tab_settings);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
 
         verticalLayout_8->addWidget(groupBox_2);
 
-        tabWidget->addTab(tab_3, QString());
+        tabWidget->addTab(tab_settings, QString());
 
         verticalLayout->addWidget(tabWidget);
 
@@ -351,7 +351,7 @@ public:
 
         retranslateUi(YellowDolphinDownloaderClass);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(YellowDolphinDownloaderClass);
@@ -376,7 +376,7 @@ public:
         radioDownload2OO->setText(QApplication::translate("YellowDolphinDownloaderClass", "OpenOffice (Calc)", 0, QApplication::UnicodeUTF8));
         downloadButton->setText(QApplication::translate("YellowDolphinDownloaderClass", "Download", 0, QApplication::UnicodeUTF8));
         progressBar->setFormat(QApplication::translate("YellowDolphinDownloaderClass", "%p%", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("YellowDolphinDownloaderClass", "Download Data", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tab_download), QApplication::translate("YellowDolphinDownloaderClass", "Download Data", 0, QApplication::UnicodeUTF8));
         outputBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Output Format", 0, QApplication::UnicodeUTF8));
         radioButton_6->setText(QApplication::translate("YellowDolphinDownloaderClass", "Binary Format", 0, QApplication::UnicodeUTF8));
         radioButton_7->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Full)", 0, QApplication::UnicodeUTF8));
@@ -387,10 +387,10 @@ public:
         groupBox->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Actual Values", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("YellowDolphinDownloaderClass", "Primary Value", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "Secondary Value", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("YellowDolphinDownloaderClass", "Remote Logging", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tab_remote), QApplication::translate("YellowDolphinDownloaderClass", "Remote Logging", 0, QApplication::UnicodeUTF8));
         refreshInterfacesBut->setText(QApplication::translate("YellowDolphinDownloaderClass", "Refresh Interfaces", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Multimeter Settings", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("YellowDolphinDownloaderClass", "Settings", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(tab_settings), QApplication::translate("YellowDolphinDownloaderClass", "Settings", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

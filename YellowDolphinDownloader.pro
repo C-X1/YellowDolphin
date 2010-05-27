@@ -1,18 +1,16 @@
 TEMPLATE = app
-TARGET = YellowDolphinDownloader 
-
-QT        += core gui 
-
-HEADERS   += yellowdolphindownloader.h
-SOURCES   += main.cpp \
+TARGET = YellowDolphinDownloader
+QT += core \
+    gui
+HEADERS += remoteLogThread.h \
+    yellowdolphindownloader.h
+SOURCES += remoteLogThread.cpp \
+    main.cpp \
     yellowdolphindownloader.cpp
-FORMS     += yellowdolphindownloader.ui    
-
-
+FORMS += yellowdolphindownloader.ui
 INCLUDEPATH += ../LibFluke/src \
     ../LibSerialDevice/src \
     ../LibCalTime/src
-
 LIBS += ../LibFluke/Debug/libFluke.so \
     ../LibCalTime/Debug/libCalTime.so \
     ../LibSerialDevice/Debug/libSerialDevice.so

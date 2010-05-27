@@ -78,6 +78,12 @@ void YellowDolphinDownloader::on_refreshInterfacesBut_clicked()
 
 void YellowDolphinDownloader::on_downloadButton_clicked()
 {
+	ui.downloadOutputBox->setDisabled(1);
+	ui.downloadButton->setDisabled(1);
+	ui.downloadSelectBox->setDisabled(1);
+	ui.tab_remote->setDisabled(1);
+	ui.tab_settings->setDisabled(1);
+
 	if(ui.radioDownloadSave->isChecked())
 	{
 		Fluke::Fluke189 FlukeMM(ui.interfacesCombo->currentText().toStdString());
@@ -126,4 +132,9 @@ void YellowDolphinDownloader::on_downloadButton_clicked()
 	                              "There is no radioButton selected for download!\n"
 	                              "Huh? That should never happen - to resolve this select one" );
 	}
+	ui.downloadOutputBox->setEnabled(1);
+	ui.downloadButton->setEnabled(1);
+	ui.downloadSelectBox->setEnabled(1);
+	ui.tab_remote->setEnabled(1);
+	ui.tab_settings->setEnabled(1);
 }

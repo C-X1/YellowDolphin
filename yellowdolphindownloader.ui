@@ -61,9 +61,9 @@
       <enum>QTabWidget::West</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
-     <widget class="QWidget" name="tab">
+     <widget class="QWidget" name="tab_download">
       <attribute name="title">
        <string>Download Data</string>
       </attribute>
@@ -176,7 +176,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="tab_remote">
       <attribute name="title">
        <string>Remote Logging</string>
       </attribute>
@@ -353,7 +353,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_3">
+     <widget class="QWidget" name="tab_settings">
       <attribute name="title">
        <string>Settings</string>
       </attribute>
