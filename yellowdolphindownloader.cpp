@@ -100,7 +100,9 @@ void YellowDolphinDownloader::on_downloadButton_clicked()
 
 		Fluke::Fluke189::RCT_QD0 CURSTAT = FlukeMM.CMD_QD0(true, 0,0);
 		Fluke::Fluke189::RCT_QD2 DATA;
-		if(CURSTAT.Data()->I_S_Log)
+
+		//Look if LOG is displayed / And if we are not in MEM View -> If so ask User if we shall proceed
+		if(CURSTAT.Data()->I_QDInfo.I_S_Log && CURSTAT.Data()->I_QDInfo.I_MEMclr!=3)
 		{
 		    switch( QMessageBox::information( this, "YellowDolphinDownloader - Multimeter in LOG Mode!",
 		        "The Multimeter on this interface is currently in logging mode\n"
