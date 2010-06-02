@@ -5,6 +5,9 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 {
 	ui.setupUi(this);
 	this->refresh_interfaces_list();
+   //QObject::connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),this->remlog, SLOT(set_interface(QString)));
+    connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),&remlog,SLOT(setInterface(QString)));
+
 }
 
 YellowDolphinDownloader::~YellowDolphinDownloader()
@@ -139,4 +142,22 @@ void YellowDolphinDownloader::on_downloadButton_clicked()
 	ui.downloadSelectBox->setEnabled(1);
 	ui.tab_remote->setEnabled(1);
 	ui.tab_settings->setEnabled(1);
+}
+
+void YellowDolphinDownloader::on_pushButton_remlog_query_clicked()
+{
+	static bool on_Noff;
+	if(!on_Noff)
+	{
+		on_Noff=true;
+		this->ui.pushButton_remlog_query->setText("Stop Querying");
+		remlog.start();
+	}
+	else
+	{
+		on_Noff=false;
+		this->ui.pushButton_remlog_query->setText("Start Querying");
+		remlog.terminate();
+	}
+
 }

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Fri May 28 21:27:17 2010
+** Created: Wed Jun 2 16:07:41 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -67,12 +67,9 @@ public:
     QRadioButton *radioButton_9;
     QHBoxLayout *horizontalLayout_4;
     QCheckBox *LogCheckBox;
-    QPushButton *pushButton_3;
+    QPushButton *pushButton_remlog_query;
     QGroupBox *groupBox;
     QVBoxLayout *verticalLayout_9;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *label;
-    QLabel *label_2;
     QHBoxLayout *horizontalLayout_6;
     QGroupBox *groupBox_pri;
     QHBoxLayout *horizontalLayout_3;
@@ -276,10 +273,10 @@ public:
 
         horizontalLayout_4->addWidget(LogCheckBox);
 
-        pushButton_3 = new QPushButton(outputBox_2);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_remlog_query = new QPushButton(outputBox_2);
+        pushButton_remlog_query->setObjectName(QString::fromUtf8("pushButton_remlog_query"));
 
-        horizontalLayout_4->addWidget(pushButton_3);
+        horizontalLayout_4->addWidget(pushButton_remlog_query);
 
 
         verticalLayout_5->addLayout(horizontalLayout_4);
@@ -298,37 +295,6 @@ public:
         verticalLayout_9->setSpacing(6);
         verticalLayout_9->setContentsMargins(11, 11, 11, 11);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        label = new QLabel(groupBox);
-        label->setObjectName(QString::fromUtf8("label"));
-        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy2);
-        QFont font;
-        font.setPointSize(14);
-        label->setFont(font);
-
-        horizontalLayout_8->addWidget(label);
-
-        label_2 = new QLabel(groupBox);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy3);
-        label_2->setFont(font);
-        label_2->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_8->addWidget(label_2);
-
-
-        verticalLayout_9->addLayout(horizontalLayout_8);
-
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
@@ -506,7 +472,7 @@ public:
 
         retranslateUi(YellowDolphinDownloaderClass);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(YellowDolphinDownloaderClass);
@@ -538,10 +504,8 @@ public:
         radioButton_8->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Reduced)", 0, QApplication::UnicodeUTF8));
         radioButton_9->setText(QApplication::translate("YellowDolphinDownloaderClass", "OpenOffice Calc", 0, QApplication::UnicodeUTF8));
         LogCheckBox->setText(QApplication::translate("YellowDolphinDownloaderClass", "Enable Log", 0, QApplication::UnicodeUTF8));
-        pushButton_3->setText(QApplication::translate("YellowDolphinDownloaderClass", "Start Querying", 0, QApplication::UnicodeUTF8));
+        pushButton_remlog_query->setText(QApplication::translate("YellowDolphinDownloaderClass", "Start Querying", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Current Values", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("YellowDolphinDownloaderClass", "Mode Switch Selction:", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "unknown", 0, QApplication::UnicodeUTF8));
         groupBox_pri->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Primary", 0, QApplication::UnicodeUTF8));
         label_23->setText(QApplication::translate("YellowDolphinDownloaderClass", "Value", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("YellowDolphinDownloaderClass", "Maximum", 0, QApplication::UnicodeUTF8));

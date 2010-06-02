@@ -10,6 +10,7 @@
 #include "ui_yellowdolphindownloader.h"
 #include "CalTime.hpp"
 #include "Fluke189.hpp"
+#include "remoteLogThread.h"
 
 
 class YellowDolphinDownloader : public QWidget
@@ -20,11 +21,10 @@ public:
     YellowDolphinDownloader(QWidget *parent = 0);
     ~YellowDolphinDownloader();
 
-
+    remoteLogThread remlog;
 
 private:
     Ui::YellowDolphinDownloaderClass ui;
-
     void refresh_interfaces_list();
 
 public:
@@ -56,6 +56,7 @@ public:
     }
 
 private slots:
+    void on_pushButton_remlog_query_clicked();
     void on_searchmultimeter_clicked();
     void on_refreshInterfacesBut_clicked();
     void on_downloadButton_clicked();
