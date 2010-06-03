@@ -12,7 +12,8 @@
 #include <QObject>
 #include <QString>
 #include <QVector>
-#include <string>
+#include <QMutex>
+#include <QMutexLocker>
 #include "Fluke189.hpp"
 
 class remoteLogThread : public QThread
@@ -21,14 +22,20 @@ class remoteLogThread : public QThread
 private:
 	QString interface;
 
+	QMutex mutex;
+	bool stop_requested;
+
 public:
 	remoteLogThread();
 	virtual ~remoteLogThread();
 
-	QVector<Fluke::Fluke189::RCT_QD0> data;
+
+
+	void stop();
 	void run();
 
 signals:
+		void handOverSerialResponse(Fluke::Fluke189::RCT_QD0);
 
 public slots:
         void setInterface(QString interface);

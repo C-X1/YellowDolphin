@@ -11,6 +11,7 @@
 #include "CalTime.hpp"
 #include "Fluke189.hpp"
 #include "remoteLogThread.h"
+#include "remoteDataAnalysisThread.h"
 
 
 class YellowDolphinDownloader : public QWidget
@@ -22,6 +23,7 @@ public:
     ~YellowDolphinDownloader();
 
     remoteLogThread remlog;
+    remoteDataAnalysisThread remanalysis;
 
 private:
     Ui::YellowDolphinDownloaderClass ui;
@@ -47,7 +49,6 @@ public:
     			std::cerr<<"YellowDolphinDownloader::progress_bar - Value for Progressbar > 100% !!!";
     		}
     		ui.progressBar->setValue(current_percent);
-
     	}
     	else
     	{

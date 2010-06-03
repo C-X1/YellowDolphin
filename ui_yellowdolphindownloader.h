@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Wed Jun 2 16:07:41 2010
+** Created: Thu Jun 3 01:08:37 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

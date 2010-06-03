@@ -2,9 +2,11 @@ TEMPLATE = app
 TARGET = YellowDolphinDownloader
 QT += core \
     gui
-HEADERS += remoteLogThread.h \
+HEADERS += remoteDataAnalysisThread.h \
+    remoteLogThread.h \
     yellowdolphindownloader.h
-SOURCES += remoteLogThread.cpp \
+SOURCES += remoteDataAnalysisThread.cpp \
+    remoteLogThread.cpp \
     main.cpp \
     yellowdolphindownloader.cpp
 FORMS += yellowdolphindownloader.ui

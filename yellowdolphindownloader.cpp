@@ -5,14 +5,21 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 {
 	ui.setupUi(this);
 	this->refresh_interfaces_list();
-   //QObject::connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),this->remlog, SLOT(set_interface(QString)));
     connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),&remlog,SLOT(setInterface(QString)));
 
 }
 
 YellowDolphinDownloader::~YellowDolphinDownloader()
 {
-
+	//terminate running processes on quit...
+	if(remlog.isRunning())
+	{
+		remlog.terminate();
+	}
+	if(remanalysis.isRunning())
+	{
+		remanalysis.terminate();
+	}
 }
 
 
@@ -35,6 +42,7 @@ void YellowDolphinDownloader::refresh_interfaces_list()
             filename="/dev/"+filename;
             cout<<"Found serial interface: "<<filename<<endl;
             ui.interfacesCombo->addItem(filename.c_str());
+            remlog.setInterface(ui.interfacesCombo->currentText());
         }
 
     }
@@ -157,7 +165,7 @@ void YellowDolphinDownloader::on_pushButton_remlog_query_clicked()
 	{
 		on_Noff=false;
 		this->ui.pushButton_remlog_query->setText("Start Querying");
-		remlog.terminate();
+		remlog.stop();
 	}
 
 }
