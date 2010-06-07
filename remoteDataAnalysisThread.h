@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QReadWriteLock>
+#include <math.h>
 
 #include <QVector>
 #include "Fluke189.hpp"
@@ -32,11 +33,10 @@ public:
 
 
 private:
-	QVector<Fluke::Fluke189::RCT_QD0> qd0Data;
 	QTimer* timer_analysis;
 	QReadWriteLock lock;
 
-	bool stop_requested;
+	QVector<Fluke::Fluke189::RCT_QD0> qd0Data;
 
 signals:
 	void updateCurrentValues(QString priValue,

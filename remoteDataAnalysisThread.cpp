@@ -33,27 +33,84 @@ void remoteDataAnalysisThread::run()
 
 void remoteDataAnalysisThread::analysis()
 {
+	//
+	static unsigned int numberDataSet;
 	Fluke::Fluke189::RCT_QD0 current;
 
 	QString priValue, priMin, priMax, priAvg, secValue, secMin, secMax, secAvg;
 
+	//Variables for storing the minimal and the maximal value
+	static double pMin, pMax, pAvg, sMin, sMax, sAvg;
+
+	//Variables for calculation of current values
+	double pvalue, svalue;
+
+	//Values for storing decimal (calculation)
+	unsigned int decimal;
+
+	//Variables for ValueErrors
+	bool perr=false, serr=false;
+
+
 	lock.lockForRead();
-	if(this->qd0Data.count())
+	//Usually this function should be faster than the logthread
+	//But otherwise it will not leave out any value
+	//each time it is called it checks if there is a new container
+	//if there is it will get the next, if not it returns
+	if(this->qd0Data.count() > (signed)numberDataSet)
 	{
-		current=this->qd0Data[this->qd0Data.count()-1];
+		current=this->qd0Data[numberDataSet];
 	}
 	lock.unlock();
 
+
+	Fluke::Fluke189::analysedInfo_t currentinfo=Fluke::Fluke189AnalyseQdInfo((Fluke::Fluke189::qdInfo_t*) &(current.Data()->I_QDInfo));
+
+	//primary Value
 	if(current.Data()->I_ErrorPV0 == 1)
 	{
 		priValue.fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoPV0));
+		perr=true;
 	}
 	else
 	{
+		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
+		decimal=(current.Data()->I_priDecimal0!=129)? current.Data()->I_priDecimal0 : 2 ;
+		pvalue=current.Data()->I_priValue0/pow(10,decimal);
+		//Min Max
+		if(pMin > pvalue) pMin=pvalue;
+		if(pMax < pvalue) pMax=pvalue;
+		//Avg
+		//numberDataSet is equal to the number of previous values
+		pAvg=(pAvg*numberDataSet+pvalue)/(numberDataSet+1);
 
+	}
+	//secondary Value
+	if(current.Data()->I_ErrorPV0 == 1)
+	{
+		secValue.fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoSV0));
+		serr=true;
+	}
+	else
+	{
+		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
+		decimal=(current.Data()->I_secDecimal!=129)? current.Data()->I_secDecimal : 2 ;
+		svalue=current.Data()->I_secValue0/pow(10,decimal);
+		//Min Max
+		if(sMin > svalue) sMin=svalue;
+		if(sMax < svalue) sMax=svalue;
+		//Avg
+		//numberDataSet is equal to the number of previous values
+		sAvg=(sAvg*numberDataSet+svalue)/(numberDataSet+1);
 	}
 
 
+
+
+
+
+
+	numberDataSet++; //increase number
 }
 
 void remoteDataAnalysisThread::stop()
