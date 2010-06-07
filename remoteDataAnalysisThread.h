@@ -10,10 +10,13 @@
 
 #include <QThread>
 #include <QObject>
+#include <QTimer>
+#include <QReadWriteLock>
+
 #include <QVector>
-#include <QMutex>
-#include <QMutexLocker>
 #include "Fluke189.hpp"
+#include "QFlukeMetaType.h"
+
 
 
 class remoteDataAnalysisThread : public QThread
@@ -26,19 +29,30 @@ public:
 	void run();
 	void stop();
 
+
+
 private:
 	QVector<Fluke::Fluke189::RCT_QD0> qd0Data;
-	QMutex mutex;
+	QTimer* timer_analysis;
+	QReadWriteLock lock;
+
 	bool stop_requested;
 
 signals:
-	void primaryValue(QString priValue);
+	void updateCurrentValues(QString priValue,
+							 QString priMin,
+							 QString priMax,
+							 QString priAvg,
+							 QString secValue,
+							 QString secMin,
+							 QString secMax,
+							 QString secAvg);
 
 public slots:
 	void getFluke189_QD0(Fluke::Fluke189::RCT_QD0 container);
 
 private slots:
-
+	void analysis();
 
 };
 

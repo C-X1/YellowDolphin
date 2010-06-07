@@ -7,6 +7,9 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	this->refresh_interfaces_list();
     connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),&remlog,SLOT(setInterface(QString)));
 
+	int i= qRegisterMetaType<Fluke::Fluke189::RCT_QD0>();
+	std::cout<<"Reg:"<<i<<std::endl;
+    connect(&remlog,SIGNAL(handOverSerialResponse(Fluke::Fluke189::RCT_QD0)),&remanalysis,SLOT(getFluke189_QD0(Fluke::Fluke189::RCT_QD0)));
 }
 
 YellowDolphinDownloader::~YellowDolphinDownloader()
@@ -160,12 +163,14 @@ void YellowDolphinDownloader::on_pushButton_remlog_query_clicked()
 		on_Noff=true;
 		this->ui.pushButton_remlog_query->setText("Stop Querying");
 		remlog.start();
+		remanalysis.start();
 	}
 	else
 	{
 		on_Noff=false;
 		this->ui.pushButton_remlog_query->setText("Start Querying");
 		remlog.stop();
+		remanalysis.stop();
 	}
 
 }

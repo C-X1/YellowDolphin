@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Thu Jun 3 01:08:37 2010
+** Created: Mon Jun 7 16:15:06 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,7 +15,6 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
 #include <QtGui/QComboBox>
 #include <QtGui/QGraphicsView>
 #include <QtGui/QGroupBox>
@@ -59,18 +58,13 @@ public:
     QVBoxLayout *verticalLayout_7;
     QGraphicsView *graphicsView;
     QHBoxLayout *horizontalLayout_7;
-    QGroupBox *outputBox_2;
-    QVBoxLayout *verticalLayout_5;
-    QRadioButton *radioButton_6;
-    QRadioButton *radioButton_7;
-    QRadioButton *radioButton_8;
-    QRadioButton *radioButton_9;
-    QHBoxLayout *horizontalLayout_4;
-    QCheckBox *LogCheckBox;
-    QPushButton *pushButton_remlog_query;
     QGroupBox *groupBox;
     QVBoxLayout *verticalLayout_9;
     QHBoxLayout *horizontalLayout_6;
+    QGroupBox *groupBox_remoteLogCommands;
+    QVBoxLayout *verticalLayout_5;
+    QPushButton *pushButton_remlog_query;
+    QPushButton *pushButton_SaveData;
     QGroupBox *groupBox_pri;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout_14;
@@ -236,54 +230,6 @@ public:
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        outputBox_2 = new QGroupBox(tab_remote);
-        outputBox_2->setObjectName(QString::fromUtf8("outputBox_2"));
-        outputBox_2->setMinimumSize(QSize(200, 200));
-        outputBox_2->setMaximumSize(QSize(200, 300));
-        verticalLayout_5 = new QVBoxLayout(outputBox_2);
-        verticalLayout_5->setSpacing(6);
-        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        radioButton_6 = new QRadioButton(outputBox_2);
-        radioButton_6->setObjectName(QString::fromUtf8("radioButton_6"));
-        radioButton_6->setChecked(true);
-
-        verticalLayout_5->addWidget(radioButton_6);
-
-        radioButton_7 = new QRadioButton(outputBox_2);
-        radioButton_7->setObjectName(QString::fromUtf8("radioButton_7"));
-
-        verticalLayout_5->addWidget(radioButton_7);
-
-        radioButton_8 = new QRadioButton(outputBox_2);
-        radioButton_8->setObjectName(QString::fromUtf8("radioButton_8"));
-
-        verticalLayout_5->addWidget(radioButton_8);
-
-        radioButton_9 = new QRadioButton(outputBox_2);
-        radioButton_9->setObjectName(QString::fromUtf8("radioButton_9"));
-
-        verticalLayout_5->addWidget(radioButton_9);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        LogCheckBox = new QCheckBox(outputBox_2);
-        LogCheckBox->setObjectName(QString::fromUtf8("LogCheckBox"));
-
-        horizontalLayout_4->addWidget(LogCheckBox);
-
-        pushButton_remlog_query = new QPushButton(outputBox_2);
-        pushButton_remlog_query->setObjectName(QString::fromUtf8("pushButton_remlog_query"));
-
-        horizontalLayout_4->addWidget(pushButton_remlog_query);
-
-
-        verticalLayout_5->addLayout(horizontalLayout_4);
-
-
-        horizontalLayout_7->addWidget(outputBox_2);
-
         groupBox = new QGroupBox(tab_remote);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -298,6 +244,25 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
+        groupBox_remoteLogCommands = new QGroupBox(groupBox);
+        groupBox_remoteLogCommands->setObjectName(QString::fromUtf8("groupBox_remoteLogCommands"));
+        verticalLayout_5 = new QVBoxLayout(groupBox_remoteLogCommands);
+        verticalLayout_5->setSpacing(6);
+        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        pushButton_remlog_query = new QPushButton(groupBox_remoteLogCommands);
+        pushButton_remlog_query->setObjectName(QString::fromUtf8("pushButton_remlog_query"));
+
+        verticalLayout_5->addWidget(pushButton_remlog_query);
+
+        pushButton_SaveData = new QPushButton(groupBox_remoteLogCommands);
+        pushButton_SaveData->setObjectName(QString::fromUtf8("pushButton_SaveData"));
+
+        verticalLayout_5->addWidget(pushButton_SaveData);
+
+
+        horizontalLayout_6->addWidget(groupBox_remoteLogCommands);
+
         groupBox_pri = new QGroupBox(groupBox);
         groupBox_pri->setObjectName(QString::fromUtf8("groupBox_pri"));
         sizePolicy.setHeightForWidth(groupBox_pri->sizePolicy().hasHeightForWidth());
@@ -472,7 +437,7 @@ public:
 
         retranslateUi(YellowDolphinDownloaderClass);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(YellowDolphinDownloaderClass);
@@ -498,14 +463,10 @@ public:
         downloadButton->setText(QApplication::translate("YellowDolphinDownloaderClass", "Download", 0, QApplication::UnicodeUTF8));
         progressBar->setFormat(QApplication::translate("YellowDolphinDownloaderClass", "%p%", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_download), QApplication::translate("YellowDolphinDownloaderClass", "Download Data", 0, QApplication::UnicodeUTF8));
-        outputBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Select Output Format", 0, QApplication::UnicodeUTF8));
-        radioButton_6->setText(QApplication::translate("YellowDolphinDownloaderClass", "Binary Format", 0, QApplication::UnicodeUTF8));
-        radioButton_7->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Full)", 0, QApplication::UnicodeUTF8));
-        radioButton_8->setText(QApplication::translate("YellowDolphinDownloaderClass", "CSV (Reduced)", 0, QApplication::UnicodeUTF8));
-        radioButton_9->setText(QApplication::translate("YellowDolphinDownloaderClass", "OpenOffice Calc", 0, QApplication::UnicodeUTF8));
-        LogCheckBox->setText(QApplication::translate("YellowDolphinDownloaderClass", "Enable Log", 0, QApplication::UnicodeUTF8));
-        pushButton_remlog_query->setText(QApplication::translate("YellowDolphinDownloaderClass", "Start Querying", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Current Values", 0, QApplication::UnicodeUTF8));
+        groupBox_remoteLogCommands->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "GroupBox", 0, QApplication::UnicodeUTF8));
+        pushButton_remlog_query->setText(QApplication::translate("YellowDolphinDownloaderClass", "Start Logging", 0, QApplication::UnicodeUTF8));
+        pushButton_SaveData->setText(QApplication::translate("YellowDolphinDownloaderClass", "Save Log-Data", 0, QApplication::UnicodeUTF8));
         groupBox_pri->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Primary", 0, QApplication::UnicodeUTF8));
         label_23->setText(QApplication::translate("YellowDolphinDownloaderClass", "Value", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("YellowDolphinDownloaderClass", "Maximum", 0, QApplication::UnicodeUTF8));

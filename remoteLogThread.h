@@ -15,6 +15,7 @@
 #include <QMutex>
 #include <QMutexLocker>
 #include "Fluke189.hpp"
+#include "QFlukeMetaType.h"
 
 class remoteLogThread : public QThread
 {
@@ -22,7 +23,7 @@ class remoteLogThread : public QThread
 private:
 	QString interface;
 
-	QMutex mutex;
+	QMutex stop_mutex;
 	bool stop_requested;
 
 public:

@@ -10,6 +10,7 @@
 #include "ui_yellowdolphindownloader.h"
 #include "CalTime.hpp"
 #include "Fluke189.hpp"
+#include "QFlukeMetaType.h"
 #include "remoteLogThread.h"
 #include "remoteDataAnalysisThread.h"
 
@@ -46,7 +47,7 @@ public:
     		if(current_percent > 100)
     		{
     			current_percent=100;
-    			std::cerr<<"YellowDolphinDownloader::progress_bar - Value for Progressbar > 100% !!!";
+				std::cerr<<"YellowDolphinDownloader::progress_bar - Value for Progressbar > 100% !!!";
     		}
     		ui.progressBar->setValue(current_percent);
     	}

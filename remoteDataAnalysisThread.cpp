@@ -9,45 +9,61 @@
 remoteDataAnalysisThread::remoteDataAnalysisThread()
 {
 	// TODO Auto-generated constructor stub
-
+	//moveToThread(this);
 }
 
 remoteDataAnalysisThread::~remoteDataAnalysisThread()
 {
 	//Wait for thread to terminate
-	std::cout<<"destructor analysis"<<std::endl;
 	wait();
 }
 
 void remoteDataAnalysisThread::run()
 {
-	forever
-	{
-		{
-			QMutexLocker locker(&mutex);
-			if(this->stop_requested)
-			{
-				this->stop_requested=false;
-				break;
-			}
+	//Create an new Timer
+	this->timer_analysis = new QTimer();
+	//Connect the Timer to analysis thread
+	connect(timer_analysis, SIGNAL(timeout()),this,SLOT(analysis()));
+	//Start it with calling the function each 500 ms,
+	//should be enough because the multimeter is only
+	//capable of sending 2 data sets each secs
+	timer_analysis->start(500);
+	exec();
+}
 
-		}
-		{
-			QMutexLocker locker(&mutex);
-			std::cout<<this->qd0Data.count()<<std::endl;
-		}
-		usleep(100000);
+void remoteDataAnalysisThread::analysis()
+{
+	Fluke::Fluke189::RCT_QD0 current;
+
+	QString priValue, priMin, priMax, priAvg, secValue, secMin, secMax, secAvg;
+
+	lock.lockForRead();
+	if(this->qd0Data.count())
+	{
+		current=this->qd0Data[this->qd0Data.count()-1];
 	}
+	lock.unlock();
+
+	if(current.Data()->I_ErrorPV0 == 1)
+	{
+		priValue.fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoPV0));
+	}
+	else
+	{
+
+	}
+
+
 }
 
 void remoteDataAnalysisThread::stop()
 {
-	QMutexLocker locker(&mutex);
-	this->stop_requested = true;
+	quit();
 }
 
 void remoteDataAnalysisThread::getFluke189_QD0(Fluke::Fluke189::RCT_QD0 container)
 {
-	QMutexLocker locker(&mutex);
+	lock.lockForWrite();
 	this->qd0Data.append(container);
+	lock.unlock();
 }
