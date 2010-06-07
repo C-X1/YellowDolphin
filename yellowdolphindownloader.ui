@@ -276,7 +276,7 @@
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_10">
                    <item>
-                    <widget class="QLabel" name="priValue">
+                    <widget class="QLabel" name="label_priValue">
                      <property name="minimumSize">
                       <size>
                        <width>30</width>
@@ -295,21 +295,21 @@
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="priMax">
+                    <widget class="QLabel" name="label_priMax">
                      <property name="text">
                       <string>###########</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="priMin">
+                    <widget class="QLabel" name="label_priMin">
                      <property name="text">
                       <string>###########</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="priAverage">
+                    <widget class="QLabel" name="label_priAverage">
                      <property name="text">
                       <string>###########</string>
                      </property>
@@ -367,7 +367,7 @@
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_16">
                    <item>
-                    <widget class="QLabel" name="priValue_2">
+                    <widget class="QLabel" name="label_secValue">
                      <property name="minimumSize">
                       <size>
                        <width>30</width>
@@ -386,21 +386,21 @@
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="priMax_2">
+                    <widget class="QLabel" name="label_secMax">
                      <property name="text">
                       <string>###########</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="priMin_2">
+                    <widget class="QLabel" name="label_secMin">
                      <property name="text">
                       <string>###########</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="priAverage_2">
+                    <widget class="QLabel" name="label_secAverage">
                      <property name="text">
                       <string>###########</string>
                      </property>

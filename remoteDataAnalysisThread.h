@@ -38,6 +38,10 @@ private:
 
 	QVector<Fluke::Fluke189::RCT_QD0> qd0Data;
 
+
+	double pMin, pMax, pAvg, sMin, sMax, sAvg;
+
+
 signals:
 	void updateCurrentValues(QString priValue,
 							 QString priMin,

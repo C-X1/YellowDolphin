@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Mon Jun 7 16:15:06 2010
+** Created: Mon Jun 7 20:33:06 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -73,10 +73,10 @@ public:
     QLabel *label_24;
     QLabel *label_26;
     QVBoxLayout *verticalLayout_10;
-    QLabel *priValue;
-    QLabel *priMax;
-    QLabel *priMin;
-    QLabel *priAverage;
+    QLabel *label_priValue;
+    QLabel *label_priMax;
+    QLabel *label_priMin;
+    QLabel *label_priAverage;
     QGroupBox *groupBox_sec;
     QHBoxLayout *horizontalLayout_5;
     QVBoxLayout *verticalLayout_15;
@@ -85,10 +85,10 @@ public:
     QLabel *label_29;
     QLabel *label_30;
     QVBoxLayout *verticalLayout_16;
-    QLabel *priValue_2;
-    QLabel *priMax_2;
-    QLabel *priMin_2;
-    QLabel *priAverage_2;
+    QLabel *label_secValue;
+    QLabel *label_secMax;
+    QLabel *label_secMin;
+    QLabel *label_secAverage;
     QWidget *tab_settings;
     QVBoxLayout *verticalLayout_8;
     QPushButton *refreshInterfacesBut;
@@ -300,27 +300,27 @@ public:
         verticalLayout_10 = new QVBoxLayout();
         verticalLayout_10->setSpacing(6);
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
-        priValue = new QLabel(groupBox_pri);
-        priValue->setObjectName(QString::fromUtf8("priValue"));
-        priValue->setMinimumSize(QSize(30, 0));
-        priValue->setBaseSize(QSize(28, 0));
+        label_priValue = new QLabel(groupBox_pri);
+        label_priValue->setObjectName(QString::fromUtf8("label_priValue"));
+        label_priValue->setMinimumSize(QSize(30, 0));
+        label_priValue->setBaseSize(QSize(28, 0));
 
-        verticalLayout_10->addWidget(priValue);
+        verticalLayout_10->addWidget(label_priValue);
 
-        priMax = new QLabel(groupBox_pri);
-        priMax->setObjectName(QString::fromUtf8("priMax"));
+        label_priMax = new QLabel(groupBox_pri);
+        label_priMax->setObjectName(QString::fromUtf8("label_priMax"));
 
-        verticalLayout_10->addWidget(priMax);
+        verticalLayout_10->addWidget(label_priMax);
 
-        priMin = new QLabel(groupBox_pri);
-        priMin->setObjectName(QString::fromUtf8("priMin"));
+        label_priMin = new QLabel(groupBox_pri);
+        label_priMin->setObjectName(QString::fromUtf8("label_priMin"));
 
-        verticalLayout_10->addWidget(priMin);
+        verticalLayout_10->addWidget(label_priMin);
 
-        priAverage = new QLabel(groupBox_pri);
-        priAverage->setObjectName(QString::fromUtf8("priAverage"));
+        label_priAverage = new QLabel(groupBox_pri);
+        label_priAverage->setObjectName(QString::fromUtf8("label_priAverage"));
 
-        verticalLayout_10->addWidget(priAverage);
+        verticalLayout_10->addWidget(label_priAverage);
 
 
         horizontalLayout_3->addLayout(verticalLayout_10);
@@ -365,27 +365,27 @@ public:
         verticalLayout_16 = new QVBoxLayout();
         verticalLayout_16->setSpacing(6);
         verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
-        priValue_2 = new QLabel(groupBox_sec);
-        priValue_2->setObjectName(QString::fromUtf8("priValue_2"));
-        priValue_2->setMinimumSize(QSize(30, 0));
-        priValue_2->setBaseSize(QSize(28, 0));
+        label_secValue = new QLabel(groupBox_sec);
+        label_secValue->setObjectName(QString::fromUtf8("label_secValue"));
+        label_secValue->setMinimumSize(QSize(30, 0));
+        label_secValue->setBaseSize(QSize(28, 0));
 
-        verticalLayout_16->addWidget(priValue_2);
+        verticalLayout_16->addWidget(label_secValue);
 
-        priMax_2 = new QLabel(groupBox_sec);
-        priMax_2->setObjectName(QString::fromUtf8("priMax_2"));
+        label_secMax = new QLabel(groupBox_sec);
+        label_secMax->setObjectName(QString::fromUtf8("label_secMax"));
 
-        verticalLayout_16->addWidget(priMax_2);
+        verticalLayout_16->addWidget(label_secMax);
 
-        priMin_2 = new QLabel(groupBox_sec);
-        priMin_2->setObjectName(QString::fromUtf8("priMin_2"));
+        label_secMin = new QLabel(groupBox_sec);
+        label_secMin->setObjectName(QString::fromUtf8("label_secMin"));
 
-        verticalLayout_16->addWidget(priMin_2);
+        verticalLayout_16->addWidget(label_secMin);
 
-        priAverage_2 = new QLabel(groupBox_sec);
-        priAverage_2->setObjectName(QString::fromUtf8("priAverage_2"));
+        label_secAverage = new QLabel(groupBox_sec);
+        label_secAverage->setObjectName(QString::fromUtf8("label_secAverage"));
 
-        verticalLayout_16->addWidget(priAverage_2);
+        verticalLayout_16->addWidget(label_secAverage);
 
 
         horizontalLayout_5->addLayout(verticalLayout_16);
@@ -472,19 +472,19 @@ public:
         label_25->setText(QApplication::translate("YellowDolphinDownloaderClass", "Maximum", 0, QApplication::UnicodeUTF8));
         label_24->setText(QApplication::translate("YellowDolphinDownloaderClass", "Minimum", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("YellowDolphinDownloaderClass", "Average", 0, QApplication::UnicodeUTF8));
-        priValue->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        priMax->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        priMin->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        priAverage->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_priValue->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_priMax->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_priMin->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_priAverage->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
         groupBox_sec->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Secondary", 0, QApplication::UnicodeUTF8));
         label_27->setText(QApplication::translate("YellowDolphinDownloaderClass", "Value", 0, QApplication::UnicodeUTF8));
         label_28->setText(QApplication::translate("YellowDolphinDownloaderClass", "Maximum", 0, QApplication::UnicodeUTF8));
         label_29->setText(QApplication::translate("YellowDolphinDownloaderClass", "Minimum", 0, QApplication::UnicodeUTF8));
         label_30->setText(QApplication::translate("YellowDolphinDownloaderClass", "Average", 0, QApplication::UnicodeUTF8));
-        priValue_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        priMax_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        priMin_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        priAverage_2->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_secValue->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_secMax->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_secMin->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_secAverage->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_remote), QApplication::translate("YellowDolphinDownloaderClass", "Remote Logging", 0, QApplication::UnicodeUTF8));
         refreshInterfacesBut->setText(QApplication::translate("YellowDolphinDownloaderClass", "Refresh Interfaces", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Multimeter Settings", 0, QApplication::UnicodeUTF8));

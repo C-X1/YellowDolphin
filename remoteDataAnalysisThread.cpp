@@ -9,7 +9,12 @@
 remoteDataAnalysisThread::remoteDataAnalysisThread()
 {
 	// TODO Auto-generated constructor stub
-	//moveToThread(this);
+	pMin=100000000;
+	pMax=-100000000;
+	pAvg=0;
+	sMin=0;
+	sMax=0;
+	sAvg=0;
 }
 
 remoteDataAnalysisThread::~remoteDataAnalysisThread()
@@ -39,9 +44,6 @@ void remoteDataAnalysisThread::analysis()
 
 	QString priValue, priMin, priMax, priAvg, secValue, secMin, secMax, secAvg;
 
-	//Variables for storing the minimal and the maximal value
-	static double pMin, pMax, pAvg, sMin, sMax, sAvg;
-
 	//Variables for calculation of current values
 	double pvalue, svalue;
 
@@ -60,8 +62,14 @@ void remoteDataAnalysisThread::analysis()
 	if(this->qd0Data.count() > (signed)numberDataSet)
 	{
 		current=this->qd0Data[numberDataSet];
+		lock.unlock();
 	}
-	lock.unlock();
+	else
+	{
+		lock.unlock();
+		return;
+	}
+
 
 
 	Fluke::Fluke189::analysedInfo_t currentinfo=Fluke::Fluke189AnalyseQdInfo((Fluke::Fluke189::qdInfo_t*) &(current.Data()->I_QDInfo));
@@ -76,7 +84,7 @@ void remoteDataAnalysisThread::analysis()
 	{
 		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
 		decimal=(current.Data()->I_priDecimal0!=129)? current.Data()->I_priDecimal0 : 2 ;
-		pvalue=current.Data()->I_priValue0/pow(10,decimal);
+		pvalue=(current.Data()->I_priValue0/pow(10,decimal))*pow(1000,current.Data()->I_priSI_Prefix0);
 		//Min Max
 		if(pMin > pvalue) pMin=pvalue;
 		if(pMax < pvalue) pMax=pvalue;
@@ -107,6 +115,16 @@ void remoteDataAnalysisThread::analysis()
 
 
 
+	if(!perr)
+	{
+		priValue.sprintf("%5f", pvalue);
+		priMin.sprintf("%5f", pMin);
+		priMax.sprintf("%5f", pMax);
+		priAvg.sprintf("%5f", pAvg);
+	}
+
+
+	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
 
 
 

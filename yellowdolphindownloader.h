@@ -62,6 +62,16 @@ private slots:
     void on_searchmultimeter_clicked();
     void on_refreshInterfacesBut_clicked();
     void on_downloadButton_clicked();
+
+public slots:
+	void updateCurrentValues(QString priValue,
+							 QString priMin,
+							 QString priMax,
+							 QString priAvg,
+							 QString secValue,
+							 QString secMin,
+							 QString secMax,
+							 QString secAvg);
 };
 
 

@@ -10,6 +10,7 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	int i= qRegisterMetaType<Fluke::Fluke189::RCT_QD0>();
 	std::cout<<"Reg:"<<i<<std::endl;
     connect(&remlog,SIGNAL(handOverSerialResponse(Fluke::Fluke189::RCT_QD0)),&remanalysis,SLOT(getFluke189_QD0(Fluke::Fluke189::RCT_QD0)));
+    connect(&remanalysis,SIGNAL(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)),this,SLOT(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)));
 }
 
 YellowDolphinDownloader::~YellowDolphinDownloader()
@@ -173,4 +174,23 @@ void YellowDolphinDownloader::on_pushButton_remlog_query_clicked()
 		remanalysis.stop();
 	}
 
+}
+
+void YellowDolphinDownloader::updateCurrentValues(QString priValue,
+												  QString priMin,
+												  QString priMax,
+												  QString priAvg,
+												  QString secValue,
+												  QString secMin,
+												  QString secMax,
+												  QString secAvg)
+{
+	this->ui.label_priValue->setText(priValue);
+	this->ui.label_priMin->setText(priMin);
+	this->ui.label_priMax->setText(priMax);
+	this->ui.label_priAverage->setText(priAvg);
+	this->ui.label_secValue->setText(secValue);
+	this->ui.label_secMin->setText(secMin);
+	this->ui.label_secMax->setText(secMax);
+	this->ui.label_secAverage->setText(secAvg);
 }
