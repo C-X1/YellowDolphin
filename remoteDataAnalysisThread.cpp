@@ -45,10 +45,7 @@ void remoteDataAnalysisThread::analysis()
 	QString priValue, priMin, priMax, priAvg, secValue, secMin, secMax, secAvg;
 
 	//Variables for calculation of current values
-	double pvalue, svalue;
-
-	//Values for storing decimal (calculation)
-	unsigned int decimal;
+	Fluke::fluke189Value_t pValue, pMin, pMax, pAvg, sValue;
 
 	//Variables for ValueErrors
 	bool perr=false, serr=false;
@@ -83,18 +80,31 @@ void remoteDataAnalysisThread::analysis()
 	else
 	{
 		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
-		decimal=(current.Data()->I_priDecimal0!=129)? current.Data()->I_priDecimal0 : 2 ;
-		pvalue=(current.Data()->I_priValue0/pow(10,decimal))*pow(1000,current.Data()->I_priSI_Prefix0);
-		//Min Max
-		if(pMin > pvalue) pMin=pvalue;
-		if(pMax < pvalue) pMax=pvalue;
-		//Avg
-		//numberDataSet is equal to the number of previous values
-		pAvg=(pAvg*numberDataSet+pvalue)/(numberDataSet+1);
+		pValue.intDecimal=(current.Data()->I_priDecimal0!=129)? current.Data()->I_priDecimal0 : 2 ;
+		pValue.intPrefix=current.Data()->I_priSI_Prefix0;
+		pValue.intValue=current.Data()->I_priValue0;
+		pValue.charUnit=currentinfo.s_priUnit[0];
+
+		//Max pMax < pCurrent
+		if(Fluke::fluke189ValueSmallerThan(pMax,pValue) || numberDataSet == 0)
+		{
+			pMax=pValue;
+		}
+
+		//Min pMin > pCurrent
+		if(Fluke::fluke189ValueSmallerThan(pValue,pMin) || numberDataSet == 0)
+		{
+			pMin=pValue;
+		}
+
+
+
+
+
 
 	}
 	//secondary Value
-	if(current.Data()->I_ErrorPV0 == 1)
+	if(current.Data()->I_ErrorSV0 == 1)
 	{
 		secValue.fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoSV0));
 		serr=true;
@@ -102,25 +112,24 @@ void remoteDataAnalysisThread::analysis()
 	else
 	{
 		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
-		decimal=(current.Data()->I_secDecimal!=129)? current.Data()->I_secDecimal : 2 ;
-		svalue=current.Data()->I_secValue0/pow(10,decimal);
-		//Min Max
-		if(sMin > svalue) sMin=svalue;
-		if(sMax < svalue) sMax=svalue;
-		//Avg
-		//numberDataSet is equal to the number of previous values
-		sAvg=(sAvg*numberDataSet+svalue)/(numberDataSet+1);
+		//decimal=(current.Data()->I_secDecimal!=129)? current.Data()->I_secDecimal : 2 ;
+		sValue.intDecimal=(current.Data()->I_secDecimal!=129)? current.Data()->I_priDecimal0 : 2 ;
+		sValue.intPrefix=current.Data()->I_secSi_Prefix;
+		sValue.intValue=current.Data()->I_secValue0;
+
+
+
 	}
 
 
 
 
-	if(!perr)
+	if(1)
 	{
-		priValue.sprintf("%5f", pvalue);
-		priMin.sprintf("%5f", pMin);
-		priMax.sprintf("%5f", pMax);
-		priAvg.sprintf("%5f", pAvg);
+		priValue.fromStdString(Fluke::fluke189ValueToString(pValue));
+		priMax.fromStdString(Fluke::fluke189ValueToString(pMax));
+		priMin.fromStdString(Fluke::fluke189ValueToString(pMin));
+		priAvg.fromStdString(Fluke::fluke189ValueToString(pAvg));
 	}
 
 
