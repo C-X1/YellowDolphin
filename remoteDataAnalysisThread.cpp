@@ -9,12 +9,8 @@
 remoteDataAnalysisThread::remoteDataAnalysisThread()
 {
 	// TODO Auto-generated constructor stub
-	pMin=100000000;
-	pMax=-100000000;
-	pAvg=0;
-	sMin=0;
-	sMax=0;
-	sAvg=0;
+	pMinset=false;
+	pMaxset=false;
 }
 
 remoteDataAnalysisThread::~remoteDataAnalysisThread()
@@ -38,18 +34,14 @@ void remoteDataAnalysisThread::run()
 
 void remoteDataAnalysisThread::analysis()
 {
-	//
 	static unsigned int numberDataSet;
 	Fluke::Fluke189::RCT_QD0 current;
 
 	QString priValue, priMin, priMax, priAvg, secValue, secMin, secMax, secAvg;
 
-	//Variables for calculation of current values
-	Fluke::fluke189Value_t pValue, pMin, pMax, pAvg, sValue;
-
 	//Variables for ValueErrors
-	bool perr=false, serr=false;
 
+	bool perr, serr;
 
 	lock.lockForRead();
 	//Usually this function should be faster than the logthread
@@ -83,19 +75,11 @@ void remoteDataAnalysisThread::analysis()
 		pValue.intDecimal=(current.Data()->I_priDecimal0!=129)? current.Data()->I_priDecimal0 : 2 ;
 		pValue.intPrefix=current.Data()->I_priSI_Prefix0;
 		pValue.intValue=current.Data()->I_priValue0;
-		pValue.charUnit=currentinfo.s_priUnit[0];
+		pValue.strUnit=currentinfo.s_priUnit;
+		pValue.strSymbolsAfter="";
 
-		//Max pMax < pCurrent
-		if(Fluke::fluke189ValueSmallerThan(pMax,pValue) || numberDataSet == 0)
-		{
-			pMax=pValue;
-		}
 
-		//Min pMin > pCurrent
-		if(Fluke::fluke189ValueSmallerThan(pValue,pMin) || numberDataSet == 0)
-		{
-			pMin=pValue;
-		}
+
 
 
 
@@ -122,16 +106,54 @@ void remoteDataAnalysisThread::analysis()
 	}
 
 
-
-
-	if(1)
+	//Max pMax < pCurrent
+	if((Fluke::fluke189ValueSmallerThan(pMax,pValue)  || !pMaxset) &&!perr)
 	{
-		priValue.fromStdString(Fluke::fluke189ValueToString(pValue));
-		priMax.fromStdString(Fluke::fluke189ValueToString(pMax));
-		priMin.fromStdString(Fluke::fluke189ValueToString(pMin));
-		priAvg.fromStdString(Fluke::fluke189ValueToString(pAvg));
+		pMax=pValue;
+		pMaxset=true;
 	}
 
+	//Min pMin > pCurrent
+	if((Fluke::fluke189ValueSmallerThan(pValue,pMin) || !pMinset) &&!perr )
+	{
+		pMin=pValue;
+		pMinset=true;
+	}
+
+
+	//Max sMax < sValue
+	if((Fluke::fluke189ValueSmallerThan(sMax,sValue)  || !sMaxset) &&!perr)
+	{
+		sMax=sValue;
+		sMaxset=true;
+	}
+
+	//Min sMin > sValue
+	if((Fluke::fluke189ValueSmallerThan(sValue,sMin) || !sMinset) &&!perr )
+	{
+		sMin=sValue;
+		sMinset=true;
+	}
+
+
+
+
+
+	if(!perr)
+	{
+			priValue=QString::fromStdString(Fluke::fluke189ValueToString(pValue));
+			if(pMaxset)priMax=QString::fromStdString(Fluke::fluke189ValueToString(pMax));
+			if(pMinset)priMin=QString::fromStdString(Fluke::fluke189ValueToString(pMin));
+	//		priAvg=QString::fromStdString(Fluke::fluke189ValueToString(pAvg));
+	}
+
+
+	if(!serr)
+	{
+			secValue=QString::fromStdString(Fluke::fluke189ValueToString(sValue));
+			if(sMaxset)secMax=QString::fromStdString(Fluke::fluke189ValueToString(sMax));
+			if(sMinset)secMin=QString::fromStdString(Fluke::fluke189ValueToString(sMin));
+	}
 
 	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
 

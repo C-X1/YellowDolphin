@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Mon Jun 7 20:33:06 2010
+** Created: Fri Jun 11 13:41:50 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -302,23 +302,45 @@ public:
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
         label_priValue = new QLabel(groupBox_pri);
         label_priValue->setObjectName(QString::fromUtf8("label_priValue"));
-        label_priValue->setMinimumSize(QSize(30, 0));
+        sizePolicy.setHeightForWidth(label_priValue->sizePolicy().hasHeightForWidth());
+        label_priValue->setSizePolicy(sizePolicy);
+        label_priValue->setMinimumSize(QSize(99, 14));
+        label_priValue->setMaximumSize(QSize(99, 14));
         label_priValue->setBaseSize(QSize(28, 0));
+        label_priValue->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_10->addWidget(label_priValue);
 
         label_priMax = new QLabel(groupBox_pri);
         label_priMax->setObjectName(QString::fromUtf8("label_priMax"));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(99);
+        sizePolicy2.setVerticalStretch(14);
+        sizePolicy2.setHeightForWidth(label_priMax->sizePolicy().hasHeightForWidth());
+        label_priMax->setSizePolicy(sizePolicy2);
+        label_priMax->setMinimumSize(QSize(99, 14));
+        label_priMax->setMaximumSize(QSize(99, 14));
+        label_priMax->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_10->addWidget(label_priMax);
 
         label_priMin = new QLabel(groupBox_pri);
         label_priMin->setObjectName(QString::fromUtf8("label_priMin"));
+        sizePolicy2.setHeightForWidth(label_priMin->sizePolicy().hasHeightForWidth());
+        label_priMin->setSizePolicy(sizePolicy2);
+        label_priMin->setMinimumSize(QSize(99, 14));
+        label_priMin->setMaximumSize(QSize(99, 14));
+        label_priMin->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_10->addWidget(label_priMin);
 
         label_priAverage = new QLabel(groupBox_pri);
         label_priAverage->setObjectName(QString::fromUtf8("label_priAverage"));
+        sizePolicy2.setHeightForWidth(label_priAverage->sizePolicy().hasHeightForWidth());
+        label_priAverage->setSizePolicy(sizePolicy2);
+        label_priAverage->setMinimumSize(QSize(99, 14));
+        label_priAverage->setMaximumSize(QSize(99, 14));
+        label_priAverage->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_10->addWidget(label_priAverage);
 
@@ -367,23 +389,42 @@ public:
         verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
         label_secValue = new QLabel(groupBox_sec);
         label_secValue->setObjectName(QString::fromUtf8("label_secValue"));
-        label_secValue->setMinimumSize(QSize(30, 0));
+        sizePolicy2.setHeightForWidth(label_secValue->sizePolicy().hasHeightForWidth());
+        label_secValue->setSizePolicy(sizePolicy2);
+        label_secValue->setMinimumSize(QSize(99, 14));
+        label_secValue->setMaximumSize(QSize(99, 14));
         label_secValue->setBaseSize(QSize(28, 0));
+        label_secValue->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_16->addWidget(label_secValue);
 
         label_secMax = new QLabel(groupBox_sec);
         label_secMax->setObjectName(QString::fromUtf8("label_secMax"));
+        sizePolicy2.setHeightForWidth(label_secMax->sizePolicy().hasHeightForWidth());
+        label_secMax->setSizePolicy(sizePolicy2);
+        label_secMax->setMinimumSize(QSize(99, 14));
+        label_secMax->setMaximumSize(QSize(99, 14));
+        label_secMax->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_16->addWidget(label_secMax);
 
         label_secMin = new QLabel(groupBox_sec);
         label_secMin->setObjectName(QString::fromUtf8("label_secMin"));
+        sizePolicy2.setHeightForWidth(label_secMin->sizePolicy().hasHeightForWidth());
+        label_secMin->setSizePolicy(sizePolicy2);
+        label_secMin->setMinimumSize(QSize(99, 14));
+        label_secMin->setMaximumSize(QSize(99, 14));
+        label_secMin->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_16->addWidget(label_secMin);
 
         label_secAverage = new QLabel(groupBox_sec);
         label_secAverage->setObjectName(QString::fromUtf8("label_secAverage"));
+        sizePolicy2.setHeightForWidth(label_secAverage->sizePolicy().hasHeightForWidth());
+        label_secAverage->setSizePolicy(sizePolicy2);
+        label_secAverage->setMinimumSize(QSize(99, 14));
+        label_secAverage->setMaximumSize(QSize(99, 14));
+        label_secAverage->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         verticalLayout_16->addWidget(label_secAverage);
 
