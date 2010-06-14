@@ -41,7 +41,7 @@ private:
 
 
 	//Variables showing if inital values for min or max have been already set
-	bool pMaxset, pMinset, sMaxset, sMinset;
+	bool stat_reset;
 
 	//Variables for calculation of current values
 	Fluke::fluke189Value_t pValue, pMin, pMax, pAvg, sValue, sMin, sMax, sAvg;

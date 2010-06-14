@@ -9,8 +9,7 @@
 remoteDataAnalysisThread::remoteDataAnalysisThread()
 {
 	// TODO Auto-generated constructor stub
-	pMinset=false;
-	pMaxset=false;
+	stat_reset=true;
 }
 
 remoteDataAnalysisThread::~remoteDataAnalysisThread()
@@ -34,14 +33,21 @@ void remoteDataAnalysisThread::run()
 
 void remoteDataAnalysisThread::analysis()
 {
-	static unsigned int numberDataSet;
+	static long numberDataSet;
+	static std::string p_current_unit,s_current_unit;
+	static long long pAverage=0,sAverage=0;  //Store everything in piko thats why we need this huge integer here
+
+
 	Fluke::Fluke189::RCT_QD0 current;
 
 	QString priValue, priMin, priMax, priAvg, secValue, secMin, secMax, secAvg;
 
 	//Variables for ValueErrors
-
 	bool perr, serr;
+
+
+
+
 
 	lock.lockForRead();
 	//Usually this function should be faster than the logthread
@@ -63,10 +69,13 @@ void remoteDataAnalysisThread::analysis()
 
 	Fluke::Fluke189::analysedInfo_t currentinfo=Fluke::Fluke189AnalyseQdInfo((Fluke::Fluke189::qdInfo_t*) &(current.Data()->I_QDInfo));
 
+
+
+
 	//primary Value
 	if(current.Data()->I_ErrorPV0 == 1)
 	{
-		priValue.fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoPV0));
+		priValue=QString::fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoPV0));
 		perr=true;
 	}
 	else
@@ -77,20 +86,15 @@ void remoteDataAnalysisThread::analysis()
 		pValue.intValue=current.Data()->I_priValue0;
 		pValue.strUnit=currentinfo.s_priUnit;
 		pValue.strSymbolsAfter="";
-
-
-
-
-
-
-
+		pValue.strSymbolsBefore="";
+		Fluke::fluke189ValueMinMaxAverage(pValue,pMin,pMax,pAvg,pAverage,numberDataSet,stat_reset, p_current_unit);
 
 
 	}
 	//secondary Value
 	if(current.Data()->I_ErrorSV0 == 1)
 	{
-		secValue.fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoSV0));
+		secValue=QString::fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoSV0));
 		serr=true;
 	}
 	else
@@ -100,68 +104,29 @@ void remoteDataAnalysisThread::analysis()
 		sValue.intDecimal=(current.Data()->I_secDecimal!=129)? current.Data()->I_priDecimal0 : 2 ;
 		sValue.intPrefix=current.Data()->I_secSi_Prefix;
 		sValue.intValue=current.Data()->I_secValue0;
-
-
-
+		sValue.strUnit=currentinfo.s_secUnit;
+		sValue.strSymbolsAfter="";
+		sValue.strSymbolsBefore="";
+		Fluke::fluke189ValueMinMaxAverage(sValue,sMin,sMax,sAvg,sAverage,numberDataSet,stat_reset, s_current_unit);
 	}
 
 
-	//Max pMax < pCurrent
-	if((Fluke::fluke189ValueSmallerThan(pMax,pValue)  || !pMaxset) &&!perr)
-	{
-		pMax=pValue;
-		pMaxset=true;
-	}
-
-	//Min pMin > pCurrent
-	if((Fluke::fluke189ValueSmallerThan(pValue,pMin) || !pMinset) &&!perr )
-	{
-		pMin=pValue;
-		pMinset=true;
-	}
 
 
-	//Max sMax < sValue
-	if((Fluke::fluke189ValueSmallerThan(sMax,sValue)  || !sMaxset) &&!perr)
-	{
-		sMax=sValue;
-		sMaxset=true;
-	}
-
-	//Min sMin > sValue
-	if((Fluke::fluke189ValueSmallerThan(sValue,sMin) || !sMinset) &&!perr )
-	{
-		sMin=sValue;
-		sMinset=true;
-	}
-
-	   static long long pAverage=0,sAverage=0;  //Store everything in piko thats why we need this huge integer here
-
-      pAverage=(pAverage*numberDataSet+pValue.intValue*pow(10,13-(pValue.intPrefix*(-3)+pValue.intDecimal)))/(numberDataSet+1);
-
-      std::cout<<pAverage<<","<<numberDataSet<<","<<pValue.intValue<<","<<pValue.intPrefix<<","<<pValue.intDecimal<<std::endl;
 
 
-      int i;
-      //get highest part position of value
-      for(i=18; (  abs(pAverage/pow(10,i)) )==0 && i >= 0; i--)
-      {
-
-      }
 
 
-      //Set prefix according highest part of value
-      //if pico set it to nano
-      pAvg.intPrefix=((i/3)==0)? -3  : (i/3)-4;
-      pAvg.intDecimal=3;
-      pAvg.intValue=(int)(pAverage/pow(10,13-(pAvg.intPrefix*(-3)+pAvg.intDecimal)));
+
+
+
 
 
 	if(!perr)
 	{
 			priValue=QString::fromStdString(Fluke::fluke189ValueToString(pValue));
-			if(pMaxset)priMax=QString::fromStdString(Fluke::fluke189ValueToString(pMax));
-			if(pMinset)priMin=QString::fromStdString(Fluke::fluke189ValueToString(pMin));
+			if(!stat_reset)priMax=QString::fromStdString(Fluke::fluke189ValueToString(pMax));
+			if(!stat_reset)priMin=QString::fromStdString(Fluke::fluke189ValueToString(pMin));
 			priAvg=QString::fromStdString(Fluke::fluke189ValueToString(pAvg));
 	}
 
@@ -169,8 +134,9 @@ void remoteDataAnalysisThread::analysis()
 	if(!serr)
 	{
 			secValue=QString::fromStdString(Fluke::fluke189ValueToString(sValue));
-			if(sMaxset)secMax=QString::fromStdString(Fluke::fluke189ValueToString(sMax));
-			if(sMinset)secMin=QString::fromStdString(Fluke::fluke189ValueToString(sMin));
+			if(!stat_reset)secMax=QString::fromStdString(Fluke::fluke189ValueToString(sMax));
+			if(!stat_reset)secMin=QString::fromStdString(Fluke::fluke189ValueToString(sMin));
+			secAvg=QString::fromStdString(Fluke::fluke189ValueToString(sAvg));
 	}
 
 	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
