@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Fri Jun 11 13:41:50 2010
+** Created: Tue Jun 15 01:46:38 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -64,7 +64,12 @@ public:
     QGroupBox *groupBox_remoteLogCommands;
     QVBoxLayout *verticalLayout_5;
     QPushButton *pushButton_remlog_query;
+    QHBoxLayout *horizontalLayout_8;
     QPushButton *pushButton_SaveData;
+    QPushButton *pushButton_3;
+    QHBoxLayout *horizontalLayout_4;
+    QPushButton *pushButton_ResetPri;
+    QPushButton *pushButton_resetSec;
     QGroupBox *groupBox_pri;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout_14;
@@ -255,10 +260,37 @@ public:
 
         verticalLayout_5->addWidget(pushButton_remlog_query);
 
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         pushButton_SaveData = new QPushButton(groupBox_remoteLogCommands);
         pushButton_SaveData->setObjectName(QString::fromUtf8("pushButton_SaveData"));
 
-        verticalLayout_5->addWidget(pushButton_SaveData);
+        horizontalLayout_8->addWidget(pushButton_SaveData);
+
+        pushButton_3 = new QPushButton(groupBox_remoteLogCommands);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+
+        horizontalLayout_8->addWidget(pushButton_3);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_8);
+
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        pushButton_ResetPri = new QPushButton(groupBox_remoteLogCommands);
+        pushButton_ResetPri->setObjectName(QString::fromUtf8("pushButton_ResetPri"));
+
+        horizontalLayout_4->addWidget(pushButton_ResetPri);
+
+        pushButton_resetSec = new QPushButton(groupBox_remoteLogCommands);
+        pushButton_resetSec->setObjectName(QString::fromUtf8("pushButton_resetSec"));
+
+        horizontalLayout_4->addWidget(pushButton_resetSec);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_4);
 
 
         horizontalLayout_6->addWidget(groupBox_remoteLogCommands);
@@ -505,27 +537,30 @@ public:
         progressBar->setFormat(QApplication::translate("YellowDolphinDownloaderClass", "%p%", 0, QApplication::UnicodeUTF8));
         tabWidget->setTabText(tabWidget->indexOf(tab_download), QApplication::translate("YellowDolphinDownloaderClass", "Download Data", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Current Values", 0, QApplication::UnicodeUTF8));
-        groupBox_remoteLogCommands->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "GroupBox", 0, QApplication::UnicodeUTF8));
+        groupBox_remoteLogCommands->setTitle(QString());
         pushButton_remlog_query->setText(QApplication::translate("YellowDolphinDownloaderClass", "Start Logging", 0, QApplication::UnicodeUTF8));
         pushButton_SaveData->setText(QApplication::translate("YellowDolphinDownloaderClass", "Save Log-Data", 0, QApplication::UnicodeUTF8));
+        pushButton_3->setText(QApplication::translate("YellowDolphinDownloaderClass", "Save Current", 0, QApplication::UnicodeUTF8));
+        pushButton_ResetPri->setText(QApplication::translate("YellowDolphinDownloaderClass", "Reset Primary", 0, QApplication::UnicodeUTF8));
+        pushButton_resetSec->setText(QApplication::translate("YellowDolphinDownloaderClass", "Reset Secondary", 0, QApplication::UnicodeUTF8));
         groupBox_pri->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Primary", 0, QApplication::UnicodeUTF8));
         label_23->setText(QApplication::translate("YellowDolphinDownloaderClass", "Value", 0, QApplication::UnicodeUTF8));
         label_25->setText(QApplication::translate("YellowDolphinDownloaderClass", "Maximum", 0, QApplication::UnicodeUTF8));
         label_24->setText(QApplication::translate("YellowDolphinDownloaderClass", "Minimum", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("YellowDolphinDownloaderClass", "Average", 0, QApplication::UnicodeUTF8));
-        label_priValue->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        label_priMax->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        label_priMin->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        label_priAverage->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_priValue->setText(QString());
+        label_priMax->setText(QString());
+        label_priMin->setText(QString());
+        label_priAverage->setText(QString());
         groupBox_sec->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Secondary", 0, QApplication::UnicodeUTF8));
         label_27->setText(QApplication::translate("YellowDolphinDownloaderClass", "Value", 0, QApplication::UnicodeUTF8));
         label_28->setText(QApplication::translate("YellowDolphinDownloaderClass", "Maximum", 0, QApplication::UnicodeUTF8));
         label_29->setText(QApplication::translate("YellowDolphinDownloaderClass", "Minimum", 0, QApplication::UnicodeUTF8));
         label_30->setText(QApplication::translate("YellowDolphinDownloaderClass", "Average", 0, QApplication::UnicodeUTF8));
-        label_secValue->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        label_secMax->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        label_secMin->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
-        label_secAverage->setText(QApplication::translate("YellowDolphinDownloaderClass", "###########", 0, QApplication::UnicodeUTF8));
+        label_secValue->setText(QString());
+        label_secMax->setText(QString());
+        label_secMin->setText(QString());
+        label_secAverage->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_remote), QApplication::translate("YellowDolphinDownloaderClass", "Remote Logging", 0, QApplication::UnicodeUTF8));
         refreshInterfacesBut->setText(QApplication::translate("YellowDolphinDownloaderClass", "Refresh Interfaces", 0, QApplication::UnicodeUTF8));
         groupBox_2->setTitle(QApplication::translate("YellowDolphinDownloaderClass", "Multimeter Settings", 0, QApplication::UnicodeUTF8));

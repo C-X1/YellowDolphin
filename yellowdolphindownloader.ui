@@ -209,7 +209,7 @@
               <item>
                <widget class="QGroupBox" name="groupBox_remoteLogCommands">
                 <property name="title">
-                 <string>GroupBox</string>
+                 <string/>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_5">
                  <item>
@@ -220,11 +220,40 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_SaveData">
-                   <property name="text">
-                    <string>Save Log-Data</string>
-                   </property>
-                  </widget>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item>
+                    <widget class="QPushButton" name="pushButton_SaveData">
+                     <property name="text">
+                      <string>Save Log-Data</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_3">
+                     <property name="text">
+                      <string>Save Current</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <item>
+                    <widget class="QPushButton" name="pushButton_ResetPri">
+                     <property name="text">
+                      <string>Reset Primary</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_resetSec">
+                     <property name="text">
+                      <string>Reset Secondary</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
@@ -302,7 +331,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -330,7 +359,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -358,7 +387,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -386,7 +415,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -471,7 +500,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -499,7 +528,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -527,7 +556,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -555,7 +584,7 @@
                       </size>
                      </property>
                      <property name="text">
-                      <string>###########</string>
+                      <string/>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
