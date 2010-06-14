@@ -172,6 +172,13 @@ void YellowDolphinDownloader::on_pushButton_remlog_query_clicked()
 		this->ui.pushButton_remlog_query->setText("Start Querying");
 		remlog.stop();
 		remanalysis.stop();
+		//Wait for Processes to End
+		//if we do not wait here and the user does a double click
+		//it will not start again in the current session
+		//There is no other thing necessary here (like a process) or something...
+		//It should not take long to end it
+		remlog.wait();
+		remanalysis.wait();
 	}
 
 }
