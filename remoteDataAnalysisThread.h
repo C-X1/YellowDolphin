@@ -13,6 +13,7 @@
 #include <QTimer>
 #include <QReadWriteLock>
 #include <math.h>
+#include <stdlib.h>
 
 #include <QVector>
 #include "Fluke189.hpp"

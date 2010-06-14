@@ -135,8 +135,26 @@ void remoteDataAnalysisThread::analysis()
 		sMinset=true;
 	}
 
+	   static long long pAverage=0,sAverage=0;  //Store everything in piko thats why we need this huge integer here
+
+      pAverage=(pAverage*numberDataSet+pValue.intValue*pow(10,13-(pValue.intPrefix*(-3)+pValue.intDecimal)))/(numberDataSet+1);
+
+      std::cout<<pAverage<<","<<numberDataSet<<","<<pValue.intValue<<","<<pValue.intPrefix<<","<<pValue.intDecimal<<std::endl;
 
 
+      int i;
+      //get highest part position of value
+      for(i=18; (  abs(pAverage/pow(10,i)) )==0 && i >= 0; i--)
+      {
+
+      }
+
+
+      //Set prefix according highest part of value
+      //if pico set it to nano
+      pAvg.intPrefix=((i/3)==0)? -3  : (i/3)-4;
+      pAvg.intDecimal=3;
+      pAvg.intValue=(int)(pAverage/pow(10,13-(pAvg.intPrefix*(-3)+pAvg.intDecimal)));
 
 
 	if(!perr)
@@ -144,7 +162,7 @@ void remoteDataAnalysisThread::analysis()
 			priValue=QString::fromStdString(Fluke::fluke189ValueToString(pValue));
 			if(pMaxset)priMax=QString::fromStdString(Fluke::fluke189ValueToString(pMax));
 			if(pMinset)priMin=QString::fromStdString(Fluke::fluke189ValueToString(pMin));
-	//		priAvg=QString::fromStdString(Fluke::fluke189ValueToString(pAvg));
+			priAvg=QString::fromStdString(Fluke::fluke189ValueToString(pAvg));
 	}
 
 
