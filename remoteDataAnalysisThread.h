@@ -40,11 +40,10 @@ private:
 	QVector<Fluke::Fluke189::RCT_QD0> qd0Data;
 
 
-	//Variables showing if inital values for min or max have been already set
-	bool stat_reset;
+	//Variables to clear min max and avg
+	bool pReset, sReset;
 
-	//Variables for calculation of current values
-	Fluke::fluke189Value_t pValue, pMin, pMax, pAvg, sValue, sMin, sMax, sAvg;
+
 
 
 signals:
