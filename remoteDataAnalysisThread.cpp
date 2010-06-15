@@ -78,13 +78,18 @@ void remoteDataAnalysisThread::analysis()
 	}
 
 
+	if(pReset || sReset)
+	{
+		//Clear class member
+		lock.lockForWrite();
+			this->pReset=false;
+			this->sReset=false;
+		lock.unlock();
+	}
+
+
 	if(pReset) pri=false;
 	if(sReset) sec=false;
-
-
-
-
-
 
 	Fluke::Fluke189::analysedInfo_t currentinfo=Fluke::Fluke189AnalyseQdInfo((Fluke::Fluke189::qdInfo_t*) &(current.Data()->I_QDInfo));
 
@@ -146,14 +151,7 @@ void remoteDataAnalysisThread::analysis()
 	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
 
 
-	if(pReset || sReset)
-	{
-		//Clear class member
-		lock.lockForWrite();
-			this->pReset=false;
-			this->sReset=false;
-		lock.unlock();
-	}
+
 
 
 	numberDataSet++; //increase number
