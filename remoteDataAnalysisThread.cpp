@@ -34,7 +34,7 @@ void remoteDataAnalysisThread::run()
 
 void remoteDataAnalysisThread::analysis()
 {
-	static long numberDataSet;
+	static long numberDataSet, pri_amount_avg, sec_amount_avg;
 	static std::string p_current_unit,s_current_unit;
 	static long long pAverage=0,sAverage=0;  //Store everything in piko thats why we need this huge integer here
 
@@ -104,12 +104,24 @@ void remoteDataAnalysisThread::analysis()
 
 		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
 		pValue.intDecimal=(current.Data()->I_priDecimal0!=129)? current.Data()->I_priDecimal0 : 2 ;
-		pValue.intPrefix=current.Data()->I_priSI_Prefix0;
+		pValue.intPrefix=(!current.Data()->I_QDInfo.I_DeltaPercent)? current.Data()->I_priSI_Prefix0 : 0;
 		pValue.intValue=current.Data()->I_priValue0;
 		pValue.strUnit=currentinfo.s_priUnit;
-		pValue.strSymbolsAfter=".";
-		pValue.strSymbolsBefore=".";
-		Fluke::fluke189ValueMinMaxAverage(pValue,pMin,pMax,pAvg,pAverage,numberDataSet,pReset, p_current_unit);
+
+		if(current.Data()->I_QDInfo.I_S_Delta)
+		{
+			pValue.strSymbolsBefore="\u0394";
+		}
+		else
+		{
+			pValue.strSymbolsAfter.append(currentinfo.s_priCurrentType);
+		}
+
+		if(current.Data()->I_QDInfo.I_RisingEtch) pValue.strSymbolsAfter.append("\u238D");
+		if(current.Data()->I_QDInfo.I_FallingEtch) pValue.strSymbolsAfter.append("\u237D");
+
+
+		Fluke::fluke189ValueMinMaxAverage(pValue,pMin,pMax,pAvg,pAverage,pri_amount_avg,pReset, p_current_unit);
 		pri=true;
 	}
 	//secondary Value
@@ -127,7 +139,7 @@ void remoteDataAnalysisThread::analysis()
 		sValue.strUnit=currentinfo.s_secUnit;
 		sValue.strSymbolsAfter=".";
 		sValue.strSymbolsBefore=".";
-		Fluke::fluke189ValueMinMaxAverage(sValue,sMin,sMax,sAvg,sAverage,numberDataSet,sReset, s_current_unit);
+		Fluke::fluke189ValueMinMaxAverage(sValue,sMin,sMax,sAvg,sAverage,sec_amount_avg,sReset, s_current_unit);
 		sec=true;
 	}
 
