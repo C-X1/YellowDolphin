@@ -11,8 +11,16 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	std::cout<<"Reg:"<<i<<std::endl;
     connect(&remlog,SIGNAL(handOverSerialResponse(Fluke::Fluke189::RCT_QD0)),&remanalysis,SLOT(getFluke189_QD0(Fluke::Fluke189::RCT_QD0)));
     connect(&remanalysis,SIGNAL(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)),this,SLOT(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)));
+
     connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),&remanalysis,SLOT(reset_primary(void)));
+    connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),this->ui.label_priMax,SLOT(clear(void)));
+    connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),this->ui.label_priMin,SLOT(clear(void)));
+    connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),this->ui.label_priAverage,SLOT(clear(void)));
+
     connect(this->ui.pushButton_resetSec,SIGNAL(clicked(void)),&remanalysis,SLOT(reset_secondary(void)));
+    connect(this->ui.pushButton_resetSec,SIGNAL(clicked(void)),this->ui.label_secMax,SLOT(clear(void)));
+    connect(this->ui.pushButton_resetSec,SIGNAL(clicked(void)),this->ui.label_secMin,SLOT(clear(void)));
+    connect(this->ui.pushButton_resetSec,SIGNAL(clicked(void)),this->ui.label_secAverage,SLOT(clear(void)));
 }
 
 YellowDolphinDownloader::~YellowDolphinDownloader()
@@ -20,12 +28,14 @@ YellowDolphinDownloader::~YellowDolphinDownloader()
 	//terminate running processes on quit...
 	if(remlog.isRunning())
 	{
-		remlog.terminate();
+		remlog.stop();
 	}
 	if(remanalysis.isRunning())
 	{
-		remanalysis.terminate();
+		remanalysis.stop();
 	}
+	remlog.wait();
+	remanalysis.wait();
 }
 
 
