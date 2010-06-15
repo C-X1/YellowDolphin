@@ -11,6 +11,8 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	std::cout<<"Reg:"<<i<<std::endl;
     connect(&remlog,SIGNAL(handOverSerialResponse(Fluke::Fluke189::RCT_QD0)),&remanalysis,SLOT(getFluke189_QD0(Fluke::Fluke189::RCT_QD0)));
     connect(&remanalysis,SIGNAL(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)),this,SLOT(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)));
+    connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),&remanalysis,SLOT(reset_primary(void)));
+    connect(this->ui.pushButton_resetSec,SIGNAL(clicked(void)),&remanalysis,SLOT(reset_secondary(void)));
 }
 
 YellowDolphinDownloader::~YellowDolphinDownloader()

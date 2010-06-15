@@ -58,7 +58,8 @@ signals:
 
 public slots:
 	void getFluke189_QD0(Fluke::Fluke189::RCT_QD0 container);
-
+	void reset_primary();
+	void reset_secondary();
 private slots:
 	void analysis();
 

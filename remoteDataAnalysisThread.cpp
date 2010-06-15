@@ -170,3 +170,16 @@ void remoteDataAnalysisThread::getFluke189_QD0(Fluke::Fluke189::RCT_QD0 containe
 	this->qd0Data.append(container);
 	lock.unlock();
 }
+
+void remoteDataAnalysisThread::reset_primary()
+{
+	lock.lockForWrite();
+		pReset=true;
+	lock.unlock();
+}
+void remoteDataAnalysisThread::reset_secondary()
+{
+	lock.lockForWrite();
+		sReset=true;
+	lock.unlock();
+}
