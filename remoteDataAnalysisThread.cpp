@@ -133,19 +133,19 @@ void remoteDataAnalysisThread::analysis()
 
 	if(!perr)
 	{
-			priValue=QString::fromStdString(Fluke::fluke189ValueToString(pValue));
-			if(pri)priMax=QString::fromStdString(Fluke::fluke189ValueToString(pMax));
-			if(pri)priMin=QString::fromStdString(Fluke::fluke189ValueToString(pMin));
-			priAvg=QString::fromStdString(Fluke::fluke189ValueToString(pAvg));
+			priValue=QString::fromUtf8(Fluke::fluke189ValueToString(pValue).c_str());
+			if(pri)priMax=QString::fromUtf8(Fluke::fluke189ValueToString(pMax).c_str());
+			if(pri)priMin=QString::fromUtf8(Fluke::fluke189ValueToString(pMin).c_str());
+			priAvg=QString::fromUtf8(Fluke::fluke189ValueToString(pAvg).c_str());
 	}
 
 
 	if(!serr)
 	{
-			secValue=QString::fromStdString(Fluke::fluke189ValueToString(sValue));
-			if(sec)secMax=QString::fromStdString(Fluke::fluke189ValueToString(sMax));
-			if(sec)secMin=QString::fromStdString(Fluke::fluke189ValueToString(sMin));
-			secAvg=QString::fromStdString(Fluke::fluke189ValueToString(sAvg));
+			secValue=QString::fromUtf8(Fluke::fluke189ValueToString(sValue).c_str());
+			if(sec)secMax=QString::fromUtf8(Fluke::fluke189ValueToString(sMax).c_str());
+			if(sec)secMin=QString::fromUtf8(Fluke::fluke189ValueToString(sMin).c_str());
+			secAvg=QString::fromUtf8(Fluke::fluke189ValueToString(sAvg).c_str());
 	}
 
 	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
