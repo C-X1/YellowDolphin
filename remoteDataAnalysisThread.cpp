@@ -50,7 +50,7 @@ void remoteDataAnalysisThread::analysis()
 	Fluke::fluke189Value_t pValue,sValue;
 
 	//Variables for ValueErrors
-	bool perr, serr;
+	bool perr=0, serr=0;
 
 	//Variables showing initialised values
 	//If there is an error on first value, min max avg will not be initialised
