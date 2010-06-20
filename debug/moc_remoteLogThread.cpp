@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'remoteLogThread.h'
 **
-** Created: Tue Jun 15 01:58:00 2010
+** Created: Fri Jun 18 00:30:34 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
