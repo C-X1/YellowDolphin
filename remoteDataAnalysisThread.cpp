@@ -34,29 +34,9 @@ void remoteDataAnalysisThread::run()
 
 void remoteDataAnalysisThread::analysis()
 {
-	static long numberDataSet, pri_amount_avg, sec_amount_avg;
-	static std::string p_current_unit,s_current_unit;
-	static long long pAverage=0,sAverage=0;  //Store everything in piko thats why we need this huge integer here
-
+	static long numberDataSet;
+	QString priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg;
 	Fluke::Fluke189::RCT_QD0 current;
-
-	//QStrings for Qt Output
-	QString priValue, priMin, priMax, priAvg, secValue, secMin, secMax, secAvg;
-
-	//Variables for calculation of min max and avg values
-	static Fluke::fluke189Value_t  pMin, pMax, pAvg, sMin, sMax, sAvg;
-
-	//Variables storing current primary and secondary value
-	Fluke::fluke189Value_t pValue,sValue;
-
-	//Variables for ValueErrors
-	bool perr=0, serr=0;
-
-	//Variables showing initialised values
-	//If there is an error on first value, min max avg will not be initialised
-	static bool pri, sec;
-
-
 
 	lock.lockForRead();
 	//have a look if user wants to reset min,max,avg
@@ -68,6 +48,7 @@ void remoteDataAnalysisThread::analysis()
 	//if there is it will get the next, if not it returns
 	if(this->qd0Data.count() > (signed)numberDataSet)
 	{
+		numberDataSet++;
 		current=this->qd0Data[numberDataSet];
 		lock.unlock();
 	}
@@ -78,8 +59,13 @@ void remoteDataAnalysisThread::analysis()
 	}
 
 
+	if(pReset) Logger.reset_primary();
+	if(sReset) Logger.reset_secondary();
+
+
 	if(pReset || sReset)
 	{
+
 		//Clear class member
 		lock.lockForWrite();
 			this->pReset=false;
@@ -87,86 +73,25 @@ void remoteDataAnalysisThread::analysis()
 		lock.unlock();
 	}
 
-
-	if(pReset) pri=false;
-	if(sReset) sec=false;
-
-	Fluke::Fluke189::analysedInfo_t currentinfo=Fluke::Fluke189AnalyseQdInfo((Fluke::Fluke189::qdInfo_t*) &(current.Data()->I_QDInfo));
-
-	//primary Value
-	if(current.Data()->I_ErrorPV0 == 1)
-	{
-		priValue=QString::fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoPV0));
-		perr=true;
-	}
-	else
-	{
-
-		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
-		pValue.intDecimal=(current.Data()->I_priDecimal0!=129)? current.Data()->I_priDecimal0 : 2 ;
-		pValue.intPrefix=(!current.Data()->I_QDInfo.I_DeltaPercent)? current.Data()->I_priSI_Prefix0 : 0;
-		pValue.intValue=current.Data()->I_priValue0;
-		pValue.strUnit=currentinfo.s_priUnit;
-
-		if(current.Data()->I_QDInfo.I_S_Delta)
-		{
-			pValue.strSymbolsBefore="\u0394";
-		}
-		else
-		{
-			pValue.strSymbolsAfter.append(currentinfo.s_priCurrentType);
-		}
-
-		if(current.Data()->I_QDInfo.I_RisingEtch) pValue.strSymbolsAfter.append("\u238D");
-		if(current.Data()->I_QDInfo.I_FallingEtch) pValue.strSymbolsAfter.append("\u237D");
+	Logger.addContainer(current);
 
 
-		Fluke::fluke189ValueMinMaxAverage(pValue,pMin,pMax,pAvg,pAverage,pri_amount_avg,pReset, p_current_unit);
-		pri=true;
-	}
-	//secondary Value
-	if(current.Data()->I_ErrorSV0 == 1)
-	{
-		secValue=QString::fromStdString(Fluke::getFluke189ValueErrorString(current.Data()->I_ErrorNoSV0));
-		serr=true;
-	}
-	else
-	{
-		//There seems to be a strange behaviour on the Hz value, the decimal is 129 instead of 2
-		sValue.intDecimal=(current.Data()->I_secDecimal!=129)? current.Data()->I_priDecimal0 : 2 ;
-		sValue.intPrefix=current.Data()->I_secSi_Prefix;
-		sValue.intValue=current.Data()->I_secValue0;
-		sValue.strUnit=currentinfo.s_secUnit;
-		sValue.strSymbolsAfter=".";
-		sValue.strSymbolsBefore=".";
-		Fluke::fluke189ValueMinMaxAverage(sValue,sMin,sMax,sAvg,sAverage,sec_amount_avg,sReset, s_current_unit);
-		sec=true;
-	}
+priValue=QString::fromUtf8(Logger.get_Primary_ValueAndUnit_String().c_str());
+priMin=QString::fromUtf8(Logger.get_Primary_Min_ValueAndUnit_String().c_str());
+priMax=QString::fromUtf8(Logger.get_Primary_Max_ValueAndUnit_String().c_str());
+priAvg=QString::fromUtf8(Logger.get_Primary_Avg_ValueAndUnit_String().c_str());
+secValue=QString::fromUtf8(Logger.get_Secondary_ValueAndUnit_String().c_str());
+secMin=QString::fromUtf8(Logger.get_Secondary_Min_ValueAndUnit_String().c_str());
+secMax=QString::fromUtf8(Logger.get_Secondary_Max_ValueAndUnit_String().c_str());
+secAvg=QString::fromUtf8(Logger.get_Secondary_Avg_ValueAndUnit_String().c_str());
 
-	if(!perr)
-	{
-			priValue=QString::fromUtf8(Fluke::fluke189ValueToString(pValue).c_str());
-			if(pri)priMax=QString::fromUtf8(Fluke::fluke189ValueToString(pMax).c_str());
-			if(pri)priMin=QString::fromUtf8(Fluke::fluke189ValueToString(pMin).c_str());
-			priAvg=QString::fromUtf8(Fluke::fluke189ValueToString(pAvg).c_str());
-	}
-
-
-	if(!serr)
-	{
-			secValue=QString::fromUtf8(Fluke::fluke189ValueToString(sValue).c_str());
-			if(sec)secMax=QString::fromUtf8(Fluke::fluke189ValueToString(sMax).c_str());
-			if(sec)secMin=QString::fromUtf8(Fluke::fluke189ValueToString(sMin).c_str());
-			secAvg=QString::fromUtf8(Fluke::fluke189ValueToString(sAvg).c_str());
-	}
-
-	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
+emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
 
 
 
 
 
-	numberDataSet++; //increase number
+
 }
 
 void remoteDataAnalysisThread::stop()

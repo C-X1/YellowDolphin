@@ -43,6 +43,7 @@ private:
 	//Variables to clear min max and avg
 	bool pReset, sReset;
 
+	Fluke::Fluke189QD0Logging Logger;
 
 
 
