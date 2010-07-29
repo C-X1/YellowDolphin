@@ -77,21 +77,16 @@ void remoteDataAnalysisThread::analysis()
 	Logger.addContainer(current);
 
 
-priValue=QString::fromUtf8(Logger.get_Primary_ValueAndUnit_String().c_str());
-priMin=QString::fromUtf8(Logger.get_Primary_Min_ValueAndUnit_String().c_str());
-priMax=QString::fromUtf8(Logger.get_Primary_Max_ValueAndUnit_String().c_str());
-priAvg=QString::fromUtf8(Logger.get_Primary_Avg_ValueAndUnit_String().c_str());
-secValue=QString::fromUtf8(Logger.get_Secondary_ValueAndUnit_String().c_str());
-secMin=QString::fromUtf8(Logger.get_Secondary_Min_ValueAndUnit_String().c_str());
-secMax=QString::fromUtf8(Logger.get_Secondary_Max_ValueAndUnit_String().c_str());
-secAvg=QString::fromUtf8(Logger.get_Secondary_Avg_ValueAndUnit_String().c_str());
+	priValue=QString::fromUtf8(Logger.get_Primary_ValueAndUnit_String().c_str());
+	priMin=QString::fromUtf8(Logger.get_Primary_Min_ValueAndUnit_String().c_str());
+	priMax=QString::fromUtf8(Logger.get_Primary_Max_ValueAndUnit_String().c_str());
+	priAvg=QString::fromUtf8(Logger.get_Primary_Avg_ValueAndUnit_String().c_str());
+	secValue=QString::fromUtf8(Logger.get_Secondary_ValueAndUnit_String().c_str());
+	secMin=QString::fromUtf8(Logger.get_Secondary_Min_ValueAndUnit_String().c_str());
+	secMax=QString::fromUtf8(Logger.get_Secondary_Max_ValueAndUnit_String().c_str());
+	secAvg=QString::fromUtf8(Logger.get_Secondary_Avg_ValueAndUnit_String().c_str());
 
-emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
-
-
-
-
-
+	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
 
 }
 
