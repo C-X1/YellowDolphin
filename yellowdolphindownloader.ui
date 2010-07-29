@@ -330,8 +330,13 @@
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
+                     </property>
                      <property name="text">
-                      <string>µ</string>
+                      <string/>
                      </property>
                      <property name="textFormat">
                       <enum>Qt::PlainText</enum>
@@ -366,6 +371,11 @@
                        <width>99</width>
                        <height>14</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
                      </property>
                      <property name="text">
                       <string/>
@@ -404,6 +414,11 @@
                        <height>14</height>
                       </size>
                      </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
+                     </property>
                      <property name="text">
                       <string/>
                      </property>
@@ -440,6 +455,11 @@
                        <width>99</width>
                        <height>14</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
                      </property>
                      <property name="text">
                       <string/>
@@ -535,6 +555,11 @@
                        <height>0</height>
                       </size>
                      </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
+                     </property>
                      <property name="text">
                       <string/>
                      </property>
@@ -571,6 +596,11 @@
                        <width>99</width>
                        <height>14</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
                      </property>
                      <property name="text">
                       <string/>
@@ -609,6 +639,11 @@
                        <height>14</height>
                       </size>
                      </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
+                     </property>
                      <property name="text">
                       <string/>
                      </property>
@@ -645,6 +680,11 @@
                        <width>99</width>
                        <height>14</height>
                       </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>9</pointsize>
+                      </font>
                      </property>
                      <property name="text">
                       <string/>

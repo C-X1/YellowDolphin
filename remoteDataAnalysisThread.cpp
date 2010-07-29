@@ -48,8 +48,9 @@ void remoteDataAnalysisThread::analysis()
 	//if there is it will get the next, if not it returns
 	if(this->qd0Data.count() > (signed)numberDataSet)
 	{
-		numberDataSet++;
+
 		current=this->qd0Data[numberDataSet];
+		numberDataSet++;
 		lock.unlock();
 	}
 	else

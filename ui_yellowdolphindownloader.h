@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Wed Jul 14 15:30:49 2010
+** Created: Thu Jul 29 21:45:25 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -339,6 +339,9 @@ public:
         label_priValue->setMinimumSize(QSize(99, 14));
         label_priValue->setMaximumSize(QSize(99, 14));
         label_priValue->setBaseSize(QSize(28, 0));
+        QFont font;
+        font.setPointSize(9);
+        label_priValue->setFont(font);
         label_priValue->setTextFormat(Qt::PlainText);
         label_priValue->setScaledContents(false);
         label_priValue->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -355,6 +358,7 @@ public:
         label_priMax->setSizePolicy(sizePolicy2);
         label_priMax->setMinimumSize(QSize(99, 14));
         label_priMax->setMaximumSize(QSize(99, 14));
+        label_priMax->setFont(font);
         label_priMax->setTextFormat(Qt::PlainText);
         label_priMax->setScaledContents(false);
         label_priMax->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -368,6 +372,7 @@ public:
         label_priMin->setSizePolicy(sizePolicy2);
         label_priMin->setMinimumSize(QSize(99, 14));
         label_priMin->setMaximumSize(QSize(99, 14));
+        label_priMin->setFont(font);
         label_priMin->setTextFormat(Qt::PlainText);
         label_priMin->setScaledContents(false);
         label_priMin->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -381,6 +386,7 @@ public:
         label_priAverage->setSizePolicy(sizePolicy2);
         label_priAverage->setMinimumSize(QSize(99, 14));
         label_priAverage->setMaximumSize(QSize(99, 14));
+        label_priAverage->setFont(font);
         label_priAverage->setTextFormat(Qt::PlainText);
         label_priAverage->setScaledContents(false);
         label_priAverage->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -438,6 +444,7 @@ public:
         label_secValue->setMinimumSize(QSize(99, 14));
         label_secValue->setMaximumSize(QSize(99, 14));
         label_secValue->setBaseSize(QSize(28, 0));
+        label_secValue->setFont(font);
         label_secValue->setTextFormat(Qt::PlainText);
         label_secValue->setScaledContents(false);
         label_secValue->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -451,6 +458,7 @@ public:
         label_secMax->setSizePolicy(sizePolicy2);
         label_secMax->setMinimumSize(QSize(99, 14));
         label_secMax->setMaximumSize(QSize(99, 14));
+        label_secMax->setFont(font);
         label_secMax->setTextFormat(Qt::PlainText);
         label_secMax->setScaledContents(false);
         label_secMax->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -464,6 +472,7 @@ public:
         label_secMin->setSizePolicy(sizePolicy2);
         label_secMin->setMinimumSize(QSize(99, 14));
         label_secMin->setMaximumSize(QSize(99, 14));
+        label_secMin->setFont(font);
         label_secMin->setTextFormat(Qt::PlainText);
         label_secMin->setScaledContents(false);
         label_secMin->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -477,6 +486,7 @@ public:
         label_secAverage->setSizePolicy(sizePolicy2);
         label_secAverage->setMinimumSize(QSize(99, 14));
         label_secAverage->setMaximumSize(QSize(99, 14));
+        label_secAverage->setFont(font);
         label_secAverage->setTextFormat(Qt::PlainText);
         label_secAverage->setScaledContents(false);
         label_secAverage->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
@@ -572,7 +582,7 @@ public:
         label_25->setText(QApplication::translate("YellowDolphinDownloaderClass", "Maximum", 0, QApplication::UnicodeUTF8));
         label_24->setText(QApplication::translate("YellowDolphinDownloaderClass", "Minimum", 0, QApplication::UnicodeUTF8));
         label_26->setText(QApplication::translate("YellowDolphinDownloaderClass", "Average", 0, QApplication::UnicodeUTF8));
-        label_priValue->setText(QApplication::translate("YellowDolphinDownloaderClass", "\302\265", 0, QApplication::UnicodeUTF8));
+        label_priValue->setText(QString());
         label_priMax->setText(QString());
         label_priMin->setText(QString());
         label_priAverage->setText(QString());
