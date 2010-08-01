@@ -8,12 +8,26 @@ class FlukeViewPort : public QWidget
 {
     Q_OBJECT
 
+
+
+
 public:
     FlukeViewPort(QWidget *parent = 0);
     ~FlukeViewPort();
 
+
 private:
     Ui::FlukeViewPortClass ui;
+    QGraphicsScene * scene;
+
+
+protected:
+
+    void paintEvent(QPaintEvent * event)
+    {
+
+    }
+
 };
 
 #endif // FLUKEVIEWPORT_H

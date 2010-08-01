@@ -9,6 +9,9 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	FlukeVPPri = new FlukeViewPort();
 	FlukeVPSec = new FlukeViewPort();
 
+
+
+
 	ui.verticalLayout_VP->addWidget(FlukeVPPri);
 	ui.verticalLayout_VP->addWidget(FlukeVPSec);
 
