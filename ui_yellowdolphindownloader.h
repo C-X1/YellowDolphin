@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'yellowdolphindownloader.ui'
 **
-** Created: Thu Jul 29 21:45:25 2010
+** Created: Sun Aug 1 19:54:47 2010
 **      by: Qt User Interface Compiler version 4.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,7 +16,6 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QComboBox>
-#include <QtGui/QGraphicsView>
 #include <QtGui/QGroupBox>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -56,8 +55,7 @@ public:
     QProgressBar *progressBar;
     QWidget *tab_remote;
     QVBoxLayout *verticalLayout_7;
-    QGraphicsView *graphicsView;
-    QHBoxLayout *horizontalLayout_7;
+    QVBoxLayout *verticalLayout_VP;
     QGroupBox *groupBox;
     QVBoxLayout *verticalLayout_9;
     QHBoxLayout *horizontalLayout_6;
@@ -227,21 +225,16 @@ public:
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
         verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        graphicsView = new QGraphicsView(tab_remote);
-        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+        verticalLayout_VP = new QVBoxLayout();
+        verticalLayout_VP->setSpacing(6);
+        verticalLayout_VP->setObjectName(QString::fromUtf8("verticalLayout_VP"));
 
-        verticalLayout_7->addWidget(graphicsView);
+        verticalLayout_7->addLayout(verticalLayout_VP);
 
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         groupBox = new QGroupBox(tab_remote);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
-        groupBox->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy);
         verticalLayout_9 = new QVBoxLayout(groupBox);
         verticalLayout_9->setSpacing(6);
         verticalLayout_9->setContentsMargins(11, 11, 11, 11);
@@ -351,11 +344,11 @@ public:
 
         label_priMax = new QLabel(groupBox_pri);
         label_priMax->setObjectName(QString::fromUtf8("label_priMax"));
-        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(99);
-        sizePolicy2.setVerticalStretch(14);
-        sizePolicy2.setHeightForWidth(label_priMax->sizePolicy().hasHeightForWidth());
-        label_priMax->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(99);
+        sizePolicy1.setVerticalStretch(14);
+        sizePolicy1.setHeightForWidth(label_priMax->sizePolicy().hasHeightForWidth());
+        label_priMax->setSizePolicy(sizePolicy1);
         label_priMax->setMinimumSize(QSize(99, 14));
         label_priMax->setMaximumSize(QSize(99, 14));
         label_priMax->setFont(font);
@@ -368,8 +361,8 @@ public:
 
         label_priMin = new QLabel(groupBox_pri);
         label_priMin->setObjectName(QString::fromUtf8("label_priMin"));
-        sizePolicy2.setHeightForWidth(label_priMin->sizePolicy().hasHeightForWidth());
-        label_priMin->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_priMin->sizePolicy().hasHeightForWidth());
+        label_priMin->setSizePolicy(sizePolicy1);
         label_priMin->setMinimumSize(QSize(99, 14));
         label_priMin->setMaximumSize(QSize(99, 14));
         label_priMin->setFont(font);
@@ -382,8 +375,8 @@ public:
 
         label_priAverage = new QLabel(groupBox_pri);
         label_priAverage->setObjectName(QString::fromUtf8("label_priAverage"));
-        sizePolicy2.setHeightForWidth(label_priAverage->sizePolicy().hasHeightForWidth());
-        label_priAverage->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_priAverage->sizePolicy().hasHeightForWidth());
+        label_priAverage->setSizePolicy(sizePolicy1);
         label_priAverage->setMinimumSize(QSize(99, 14));
         label_priAverage->setMaximumSize(QSize(99, 14));
         label_priAverage->setFont(font);
@@ -439,8 +432,8 @@ public:
         verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
         label_secValue = new QLabel(groupBox_sec);
         label_secValue->setObjectName(QString::fromUtf8("label_secValue"));
-        sizePolicy2.setHeightForWidth(label_secValue->sizePolicy().hasHeightForWidth());
-        label_secValue->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_secValue->sizePolicy().hasHeightForWidth());
+        label_secValue->setSizePolicy(sizePolicy1);
         label_secValue->setMinimumSize(QSize(99, 14));
         label_secValue->setMaximumSize(QSize(99, 14));
         label_secValue->setBaseSize(QSize(28, 0));
@@ -454,8 +447,8 @@ public:
 
         label_secMax = new QLabel(groupBox_sec);
         label_secMax->setObjectName(QString::fromUtf8("label_secMax"));
-        sizePolicy2.setHeightForWidth(label_secMax->sizePolicy().hasHeightForWidth());
-        label_secMax->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_secMax->sizePolicy().hasHeightForWidth());
+        label_secMax->setSizePolicy(sizePolicy1);
         label_secMax->setMinimumSize(QSize(99, 14));
         label_secMax->setMaximumSize(QSize(99, 14));
         label_secMax->setFont(font);
@@ -468,8 +461,8 @@ public:
 
         label_secMin = new QLabel(groupBox_sec);
         label_secMin->setObjectName(QString::fromUtf8("label_secMin"));
-        sizePolicy2.setHeightForWidth(label_secMin->sizePolicy().hasHeightForWidth());
-        label_secMin->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_secMin->sizePolicy().hasHeightForWidth());
+        label_secMin->setSizePolicy(sizePolicy1);
         label_secMin->setMinimumSize(QSize(99, 14));
         label_secMin->setMaximumSize(QSize(99, 14));
         label_secMin->setFont(font);
@@ -482,8 +475,8 @@ public:
 
         label_secAverage = new QLabel(groupBox_sec);
         label_secAverage->setObjectName(QString::fromUtf8("label_secAverage"));
-        sizePolicy2.setHeightForWidth(label_secAverage->sizePolicy().hasHeightForWidth());
-        label_secAverage->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_secAverage->sizePolicy().hasHeightForWidth());
+        label_secAverage->setSizePolicy(sizePolicy1);
         label_secAverage->setMinimumSize(QSize(99, 14));
         label_secAverage->setMaximumSize(QSize(99, 14));
         label_secAverage->setFont(font);
@@ -504,10 +497,7 @@ public:
         verticalLayout_9->addLayout(horizontalLayout_6);
 
 
-        horizontalLayout_7->addWidget(groupBox);
-
-
-        verticalLayout_7->addLayout(horizontalLayout_7);
+        verticalLayout_7->addWidget(groupBox);
 
         tabWidget->addTab(tab_remote, QString());
         tab_settings = new QWidget();
@@ -540,7 +530,6 @@ public:
         QWidget::setTabOrder(radioDownload2CSVF, radioDownload2CSVR);
         QWidget::setTabOrder(radioDownload2CSVR, radioDownload2OO);
         QWidget::setTabOrder(radioDownload2OO, downloadButton);
-        QWidget::setTabOrder(downloadButton, graphicsView);
 
         retranslateUi(YellowDolphinDownloaderClass);
 

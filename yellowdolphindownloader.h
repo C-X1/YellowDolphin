@@ -13,6 +13,11 @@
 #include "QFlukeMetaType.h"
 #include "remoteLogThread.h"
 #include "remoteDataAnalysisThread.h"
+#include "flukeviewport.h"
+
+
+#include <QPainter>
+#include <QImage>
 
 
 class YellowDolphinDownloader : public QWidget
@@ -23,12 +28,15 @@ public:
     YellowDolphinDownloader(QWidget *parent = 0);
     ~YellowDolphinDownloader();
 
+    FlukeViewPort *FlukeVPPri, *FlukeVPSec;
     remoteLogThread remlog;
     remoteDataAnalysisThread remanalysis;
 
 private:
+
     Ui::YellowDolphinDownloaderClass ui;
     void refresh_interfaces_list();
+
 
 public:
     static void Wrapper_to_progress_bar(void* progressbarobject, unsigned int current_byte, unsigned int byte_amount)

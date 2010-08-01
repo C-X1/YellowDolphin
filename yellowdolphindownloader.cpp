@@ -5,7 +5,14 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 {
 	ui.setupUi(this);
 	this->refresh_interfaces_list();
-    connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),&remlog,SLOT(setInterface(QString)));
+
+	FlukeVPPri = new FlukeViewPort();
+	FlukeVPSec = new FlukeViewPort();
+
+	ui.verticalLayout_VP->addWidget(FlukeVPPri);
+	ui.verticalLayout_VP->addWidget(FlukeVPSec);
+
+	connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),&remlog,SLOT(setInterface(QString)));
 
 	int i= qRegisterMetaType<Fluke::Fluke189::RCT_QD0>();
 	std::cout<<"Reg:"<<i<<std::endl;
