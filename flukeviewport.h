@@ -2,7 +2,9 @@
 #define FLUKEVIEWPORT_H
 
 #include <QtGui/QWidget>
+#include <QGraphicsItem>
 #include "ui_flukeviewport.h"
+#include <math.h>
 
 class FlukeViewPort : public QWidget
 {
@@ -19,12 +21,15 @@ public:
 private:
     Ui::FlukeViewPortClass ui;
     QGraphicsScene * scene;
+    QGraphicsLineItem * middleline;
+
 
 
 protected:
 
     void paintEvent(QPaintEvent * event)
     {
+    	this->middleline->setPen(QPen(Qt::gray,1));
 
     }
 
