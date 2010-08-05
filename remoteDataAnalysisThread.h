@@ -56,6 +56,8 @@ signals:
 							 QString secMin,
 							 QString secMax,
 							 QString secAvg);
+	void setGraph(unsigned int timeindex, Fluke::Fluke189QD0Logging::Fluke189Value_t value);
+
 
 public slots:
 	void getFluke189_QD0(Fluke::Fluke189::RCT_QD0 container);

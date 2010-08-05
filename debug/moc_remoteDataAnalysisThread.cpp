@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'remoteDataAnalysisThread.h'
 **
-** Created: Sun Aug 1 00:31:16 2010
+** Created: Wed Aug 4 19:09:23 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,21 +23,22 @@ static const uint qt_meta_data_remoteDataAnalysisThread[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       86,   26,   25,   25, 0x05,
+     187,  171,   25,   25, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-     181,  171,   25,   25, 0x0a,
-     223,   25,   25,   25, 0x0a,
-     239,   25,   25,   25, 0x0a,
-     257,   25,   25,   25, 0x08,
+     255,  245,   25,   25, 0x0a,
+     297,   25,   25,   25, 0x0a,
+     313,   25,   25,   25, 0x0a,
+     331,   25,   25,   25, 0x08,
 
        0        // eod
 };
@@ -47,6 +48,8 @@ static const char qt_meta_stringdata_remoteDataAnalysisThread[] = {
     "priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg\0"
     "updateCurrentValues(QString,QString,QString,QString,QString,QString,QS"
     "tring,QString)\0"
+    "timeindex,value\0"
+    "setGraph(uint,Fluke::Fluke189QD0Logging::Fluke189Value_t)\0"
     "container\0getFluke189_QD0(Fluke::Fluke189::RCT_QD0)\0"
     "reset_primary()\0reset_secondary()\0"
     "analysis()\0"
@@ -82,13 +85,14 @@ int remoteDataAnalysisThread::qt_metacall(QMetaObject::Call _c, int _id, void **
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: updateCurrentValues((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])),(*reinterpret_cast< QString(*)>(_a[4])),(*reinterpret_cast< QString(*)>(_a[5])),(*reinterpret_cast< QString(*)>(_a[6])),(*reinterpret_cast< QString(*)>(_a[7])),(*reinterpret_cast< QString(*)>(_a[8]))); break;
-        case 1: getFluke189_QD0((*reinterpret_cast< Fluke::Fluke189::RCT_QD0(*)>(_a[1]))); break;
-        case 2: reset_primary(); break;
-        case 3: reset_secondary(); break;
-        case 4: analysis(); break;
+        case 1: setGraph((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< Fluke::Fluke189QD0Logging::Fluke189Value_t(*)>(_a[2]))); break;
+        case 2: getFluke189_QD0((*reinterpret_cast< Fluke::Fluke189::RCT_QD0(*)>(_a[1]))); break;
+        case 3: reset_primary(); break;
+        case 4: reset_secondary(); break;
+        case 5: analysis(); break;
         default: ;
         }
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }
@@ -98,5 +102,12 @@ void remoteDataAnalysisThread::updateCurrentValues(QString _t1, QString _t2, QSt
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)), const_cast<void*>(reinterpret_cast<const void*>(&_t5)), const_cast<void*>(reinterpret_cast<const void*>(&_t6)), const_cast<void*>(reinterpret_cast<const void*>(&_t7)), const_cast<void*>(reinterpret_cast<const void*>(&_t8)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void remoteDataAnalysisThread::setGraph(unsigned int _t1, Fluke::Fluke189QD0Logging::Fluke189Value_t _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_END_MOC_NAMESPACE

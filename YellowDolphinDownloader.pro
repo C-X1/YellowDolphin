@@ -2,7 +2,8 @@ TEMPLATE = app
 TARGET = YellowDolphinDownloader
 QT += core \
     gui
-HEADERS += flukeviewport.h \
+HEADERS += QFlukeValueMetaType.h \
+    flukeviewport.h \
     QFlukeMetaType.h \
     remoteDataAnalysisThread.h \
     remoteLogThread.h \

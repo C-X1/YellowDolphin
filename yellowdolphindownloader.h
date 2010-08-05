@@ -11,6 +11,7 @@
 #include "CalTime.hpp"
 #include "Fluke189.hpp"
 #include "QFlukeMetaType.h"
+#include "QFlukeValueMetaType.h"
 #include "remoteLogThread.h"
 #include "remoteDataAnalysisThread.h"
 #include "flukeviewport.h"
