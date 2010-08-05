@@ -35,7 +35,6 @@ FlukeViewPort::FlukeViewPort(QWidget *parent)
 
 	this->currentVal = 0;
 
-	this->ui.graphicsView->scale(10,10);
 
 
 }
