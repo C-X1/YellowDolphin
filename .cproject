@@ -115,6 +115,7 @@
 </buildTargets>
 </storageModule>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.core.pathentry">
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="" kind="inc" path="" system="true"/>
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="QtTest" kind="inc" path="" system="true"/>
@@ -145,6 +146,9 @@
 <pathentry base-path="LibFluke" include="src" kind="inc" path="" system="true"/>
 <pathentry base-path="LibSerialDevice" include="src" kind="inc" path="" system="true"/>
 <pathentry base-path="LibCalTime" include="src" kind="inc" path="" system="true"/>
+<pathentry include="/usr/include" kind="inc" path="" system="true"/>
+<pathentry include="/usr/include/c++/4.4" kind="inc" path="" system="true"/>
+<pathentry include="/usr/include/qwt-qt4" kind="inc" path="" system="true"/>
 <pathentry kind="src" path=""/>
 <pathentry kind="out" path=""/>
 <pathentry kind="lib" library="/home/cyborg-x1/Entwicklung/EclipseCPP/LibCalTime/Debug/libCalTime.so" path=""/>
