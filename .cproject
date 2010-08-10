@@ -94,11 +94,12 @@
 </scannerInfoProvider>
 </profile>
 </storageModule>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
 <buildTargets>
 <target name="Qt Release Build" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>make</buildCommand>
-<buildArguments/>
 <buildTarget>release</buildTarget>
 <stopOnError>false</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
@@ -106,7 +107,6 @@
 </target>
 <target name="Qt Debug Build" path="" targetID="org.eclipse.cdt.make.MakeTargetBuilder">
 <buildCommand>make</buildCommand>
-<buildArguments/>
 <buildTarget>debug</buildTarget>
 <stopOnError>false</stopOnError>
 <useDefaultCommand>false</useDefaultCommand>
@@ -114,8 +114,6 @@
 </target>
 </buildTargets>
 </storageModule>
-<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.core.pathentry">
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="" kind="inc" path="" system="true"/>
 <pathentry base-path="/home/cyborg-x1/Programme/qtsdk-2010.02/qt/include" include="QtTest" kind="inc" path="" system="true"/>
@@ -157,6 +155,7 @@
 <pathentry kind="prj" path="/LibSerialDevice"/>
 <pathentry kind="prj" path="/LibFluke"/>
 <pathentry kind="prj" path="/LibCalTime"/>
+<pathentry kind="lib" library="/usr/lib/libqwt-qt4.so" path=""/>
 </storageModule>
 </cconfiguration>
 </storageModule>

@@ -17,7 +17,9 @@ FORMS += flukeviewport.ui \
     yellowdolphindownloader.ui
 INCLUDEPATH += ../LibFluke/src \
     ../LibSerialDevice/src \
-    ../LibCalTime/src
-LIBS += ../LibFluke/Debug/libFluke.so \
+    ../LibCalTime/src \
+    ../usr/include/qwt-qt4
+LIBS += /usr/lib/libqwt-qt4.so \
+    ../LibFluke/Debug/libFluke.so \
     ../LibCalTime/Debug/libCalTime.so \
     ../LibSerialDevice/Debug/libSerialDevice.so

@@ -10,10 +10,19 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	FlukeVPSec = new FlukeViewPort();
 
 
+	reset=true;
 
+	primaryPlot =new QwtPlot();
+	primaryPlot->setCanvasBackground(Qt::black);
+	primaryCurve =new QwtPlotCurve("Primary Value");
 
-	ui.verticalLayout_VP->addWidget(FlukeVPPri);
-	ui.verticalLayout_VP->addWidget(FlukeVPSec);
+	primaryCurve->attach(primaryPlot);
+	primaryCurve->setPen(QPen(Qt::yellow,1));
+
+	ui.verticalLayout_VP->addWidget(primaryPlot);
+
+//	ui.verticalLayout_VP->addWidget(FlukeVPPri);
+//	ui.verticalLayout_VP->addWidget(FlukeVPSec);
 
 	connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),&remlog,SLOT(setInterface(QString)));
 
@@ -24,7 +33,7 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 
     connect(&remlog,SIGNAL(handOverSerialResponse(Fluke::Fluke189::RCT_QD0)),&remanalysis,SLOT(getFluke189_QD0(Fluke::Fluke189::RCT_QD0)));
     connect(&remanalysis,SIGNAL(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)),this,SLOT(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)));
-    connect(&remanalysis,SIGNAL(setGraph(unsigned int, Fluke::Fluke189QD0Logging::Fluke189Value_t)),this->FlukeVPPri,SLOT(addValue(unsigned int, Fluke::Fluke189QD0Logging::Fluke189Value_t)));
+    connect(&remanalysis,SIGNAL(setGraph(unsigned int, Fluke::Fluke189QD0Logging::Fluke189Value_t)),this,SLOT(addPrimaryPlotValue(unsigned int, Fluke::Fluke189QD0Logging::Fluke189Value_t)));
 
 
     connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),&remanalysis,SLOT(reset_primary(void)));

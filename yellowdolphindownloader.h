@@ -15,7 +15,17 @@
 #include "remoteLogThread.h"
 #include "remoteDataAnalysisThread.h"
 #include "flukeviewport.h"
-
+#include <qwt-qt4/qwt_plot.h>
+#include <qwt-qt4/qwt_plot_curve.h>
+#include <qwt-qt4/qwt_painter.h>
+#include <qwt-qt4/qwt_plot_canvas.h>
+#include <qwt-qt4/qwt_plot_marker.h>
+#include <qwt-qt4/qwt_plot_curve.h>
+#include <qwt-qt4/qwt_scale_widget.h>
+#include <qwt-qt4/qwt_legend.h>
+#include <qwt-qt4/qwt_scale_draw.h>
+#include <qwt-qt4/qwt_math.h>
+#include <QVector>
 
 #include <QPainter>
 #include <QImage>
@@ -30,6 +40,11 @@ public:
     ~YellowDolphinDownloader();
 
     FlukeViewPort *FlukeVPPri, *FlukeVPSec;
+
+    QwtPlot * primaryPlot;
+    QwtPlotCurve * primaryCurve;
+
+
     remoteLogThread remlog;
     remoteDataAnalysisThread remanalysis;
 
@@ -37,6 +52,23 @@ private:
 
     Ui::YellowDolphinDownloaderClass ui;
     void refresh_interfaces_list();
+
+    /*Initialized*/
+    bool reset;
+
+    /*Variable to hold begining timestamp*/
+    unsigned int begintime;
+
+    /*Current Prefix*/
+    int currentPre;
+
+    /*Current value*/
+    qreal currentVal;
+
+    /*Current Time*/
+    qreal currentTime;
+
+    QVector<double> xprimV, yprimV;
 
 
 public:
@@ -81,6 +113,33 @@ public slots:
 							 QString secMin,
 							 QString secMax,
 							 QString secAvg);
+	void addPrimaryPlotValue(unsigned int timeindex, Fluke::Fluke189QD0Logging::Fluke189Value_t value)
+	{
+
+		if(this->reset) //move to reset
+		{
+			this->reset=false;
+			currentPre=value.Prefix;
+			begintime=timeindex;
+		}
+		else
+		{
+			if(timeindex-begintime<=0)
+			{
+				return;
+			}
+		}
+
+
+	    double newvalue=(value.Value/pow(10,value.Decimal))/pow(10,(currentPre-value.Prefix)*3);
+		double newtime=timeindex-begintime;
+
+		xprimV.push_back(newtime);
+		yprimV.push_back(newvalue);
+
+		primaryCurve->setData(xprimV.data(), yprimV.data(),xprimV.count());
+		primaryPlot->replot();
+	}
 };
 
 
