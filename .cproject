@@ -147,7 +147,7 @@
 <pathentry include="/usr/include" kind="inc" path="" system="true"/>
 <pathentry include="/usr/include/c++/4.4" kind="inc" path="" system="true"/>
 <pathentry include="/usr/include/qwt-qt4" kind="inc" path="" system="true"/>
-<pathentry kind="src" path=""/>
+<pathentry excluding="QFlukePlotterClass/" kind="src" path=""/>
 <pathentry kind="out" path=""/>
 <pathentry kind="lib" library="/home/cyborg-x1/Entwicklung/EclipseCPP/LibCalTime/Debug/libCalTime.so" path=""/>
 <pathentry kind="lib" library="/home/cyborg-x1/Entwicklung/EclipseCPP/LibFluke/Debug/libFluke.so" path=""/>

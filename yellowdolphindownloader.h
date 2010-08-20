@@ -14,7 +14,7 @@
 #include "QFlukeValueMetaType.h"
 #include "remoteLogThread.h"
 #include "remoteDataAnalysisThread.h"
-#include "flukeviewport.h"
+
 #include <qwt-qt4/qwt_plot.h>
 #include <qwt-qt4/qwt_plot_curve.h>
 #include <qwt-qt4/qwt_painter.h>
@@ -30,6 +30,9 @@
 #include <QPainter>
 #include <QImage>
 
+#include "QFlukePlotter/QFlukePlotter.hpp"
+#include "QFlukePlotter/qflukeplotcurve.h"
+
 
 class YellowDolphinDownloader : public QWidget
 {
@@ -39,10 +42,10 @@ public:
     YellowDolphinDownloader(QWidget *parent = 0);
     ~YellowDolphinDownloader();
 
-    FlukeViewPort *FlukeVPPri, *FlukeVPSec;
 
-    QwtPlot * primaryPlot;
-    QwtPlotCurve * primaryCurve;
+
+    QFlukePlotter * primaryPlot;
+    QFlukePlotCurve * primaryCurve;
 
 
     remoteLogThread remlog;
@@ -115,29 +118,7 @@ public slots:
 							 QString secAvg);
 	void addPrimaryPlotValue(unsigned int timeindex, Fluke::Fluke189QD0Logging::Fluke189Value_t value)
 	{
-
-		if(this->reset) //move to reset
-		{
-			this->reset=false;
-			currentPre=value.Prefix;
-			begintime=timeindex;
-		}
-		else
-		{
-			if(timeindex-begintime<=0)
-			{
-				return;
-			}
-		}
-
-
-	    double newvalue=(value.Value/pow(10,value.Decimal))/pow(10,(currentPre-value.Prefix)*3);
-		double newtime=timeindex-begintime;
-
-		xprimV.push_back(newtime);
-		yprimV.push_back(newvalue);
-
-		primaryCurve->setData(xprimV.data(), yprimV.data(),xprimV.count());
+		primaryCurve->addDataPoint(timeindex, value);
 		primaryPlot->replot();
 	}
 };

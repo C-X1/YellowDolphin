@@ -1,23 +1,26 @@
 #include "yellowdolphindownloader.h"
 
+
 YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
     : QWidget(parent)
 {
 	ui.setupUi(this);
 	this->refresh_interfaces_list();
 
-	FlukeVPPri = new FlukeViewPort();
-	FlukeVPSec = new FlukeViewPort();
+
 
 
 	reset=true;
 
-	primaryPlot =new QwtPlot();
+	primaryPlot =new QFlukePlotter();
 	primaryPlot->setCanvasBackground(Qt::black);
-	primaryCurve =new QwtPlotCurve("Primary Value");
+	primaryCurve =new QFlukePlotCurve();
 
 	primaryCurve->attach(primaryPlot);
 	primaryCurve->setPen(QPen(Qt::yellow,1));
+
+
+
 
 	ui.verticalLayout_VP->addWidget(primaryPlot);
 

@@ -2,19 +2,20 @@ TEMPLATE = app
 TARGET = YellowDolphinDownloader
 QT += core \
     gui
-HEADERS += QFlukeValueMetaType.h \
-    flukeviewport.h \
+HEADERS += QFlukePlotter/qflukeplotcurve.h \
+    QFlukePlotter/QFlukePlotter.hpp \
+    QFlukeValueMetaType.h \
     QFlukeMetaType.h \
     remoteDataAnalysisThread.h \
     remoteLogThread.h \
     yellowdolphindownloader.h
-SOURCES += flukeviewport.cpp \
+SOURCES += QFlukePlotter/qflukeplotcurve.cpp \
+    QFlukePlotter/QFlukePlotter.cpp \
     remoteDataAnalysisThread.cpp \
     remoteLogThread.cpp \
     main.cpp \
     yellowdolphindownloader.cpp
-FORMS += flukeviewport.ui \
-    yellowdolphindownloader.ui
+FORMS += yellowdolphindownloader.ui
 INCLUDEPATH += ../LibFluke/src \
     ../LibSerialDevice/src \
     ../LibCalTime/src \
