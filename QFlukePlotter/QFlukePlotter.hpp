@@ -13,32 +13,32 @@
 
 
 
-//class QFlukePlotCanvas : public QwtPlotCanvas
-//{
-//	Q_OBJECT
-//
-//public:
-//	QFlukePlotCanvas(QwtPlot *plot);
-//    ~QFlukePlotCanvas();
-//
-//    void wheelEvent(QWheelEvent * e)
-//    {
-//    	std::cout<<" X:"<<e->x();
-//    	std::cout<<" Y:"<<e->y();
-//    	std::cout<<" Orient: "<<e->orientation();
-//    	std::cout<<" Delta: "<<e->delta();
-//    	std::cout<<" Dir: ";
-//    	if(e->orientation()==1)//MouseWheel HorizontalDirection
-//    	{
-//    		std::cout<<"h";
-//    	}
-//    	if(e->orientation()==2)//MouseWheel VerticalDirection
-//    	{
-//    		std::cout<<"v";
-//    	}
-//    	std::cout<<std::endl;
-//    }
-//};
+class QFlukeCanvasEventFilter : public QObject
+{
+	Q_OBJECT
+
+public:
+	QFlukeCanvasEventFilter(QObject *parent)
+	: QObject(parent)
+	{
+
+	}
+	~QFlukeCanvasEventFilter()
+	{
+
+	}
+
+protected:
+	bool eventFilter(QObject *obj, QEvent *event)
+	{
+		if(event->type() == QEvent::MouseButtonDblClick)
+		{
+		std::cout<<"OnCanvasClick"<<std::endl;
+		return true;
+		}
+		return false;
+	}
+};
 
 
 
@@ -67,15 +67,12 @@ private:
 
 
 
+
 public slots:
 	/**
 	 * Clears all plot-data
 	 */
 	void clear();
-
-
-
-	void OnCanvasClick();
 
 };
 

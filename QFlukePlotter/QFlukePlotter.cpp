@@ -19,7 +19,8 @@ QFlukePlotter::QFlukePlotter(QWidget *parent)
     : QwtPlot(parent)
 {
 	this->setAxisTitle(2,"Time [s]");
-        connect(this->canvas(),SIGNAL(customContextMenuRequested(QPoint)),this,SLOT(OnCanvasClick()));
+	QFlukeCanvasEventFilter * CanvasEventFilter=new QFlukeCanvasEventFilter(this);
+	this->canvas()->installEventFilter(CanvasEventFilter);
 
 }
 
@@ -29,11 +30,6 @@ QFlukePlotter::QFlukePlotter(QWidget *parent)
 QFlukePlotter::~QFlukePlotter()
 {
 
-}
-
-void QFlukePlotter::OnCanvasClick()
-{
-	std::cout<<"testtt"<<std::endl;
 }
 
 
