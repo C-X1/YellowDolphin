@@ -14,6 +14,8 @@
 #include <qwt-qt4/qwt_legend.h>
 #include <qwt-qt4/qwt_scale_draw.h>
 #include <qwt-qt4/qwt_math.h>
+#include <qwt-qt4/qwt_symbol.h>
+
 
 #include <iostream> //TODO delete
 
@@ -25,12 +27,23 @@ private:
 	int currentPrefix;
 	unsigned int startvalue;
 
+
+	QwtPlotCurve * points;
+
     QVector<double>timestamps;
     QVector<double>values;
 
 public:
     QFlukePlotCurve();
     ~QFlukePlotCurve();
+
+//    void attach(QwtPlot * plot)
+//    {
+//    	this->QwtPlotCurve::attach(plot);
+//    	this->points->attach(plot);
+//    }
+
+
 
     /**
      * This function will add a data point to the Curve
@@ -48,6 +61,8 @@ public:
     	timestamps.push_back((double)(timestamp-startvalue)/10);
     	values.push_back((value.Value/pow(10,value.Decimal))/pow(10,(currentPrefix-value.Prefix)*3));
     	this->setRawData(timestamps.data(),values.data(),values.size());
+    //	this->points->setRawData(timestamps.data(),values.data(),values.size());
+
     }
 
     /**
