@@ -61,8 +61,6 @@ public:
     	timestamps.push_back((double)(timestamp-startvalue)/10);
     	values.push_back((value.Value/pow(10,value.Decimal))/pow(10,(currentPrefix-value.Prefix)*3));
     	this->setRawData(timestamps.data(),values.data(),values.size());
-    //	this->points->setRawData(timestamps.data(),values.data(),values.size());
-
     }
 
     /**

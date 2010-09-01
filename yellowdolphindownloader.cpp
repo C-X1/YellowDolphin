@@ -14,10 +14,30 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 
 	primaryPlot =new QFlukePlotter();
 	primaryPlot->setCanvasBackground(Qt::black);
-	primaryCurve =new QFlukePlotCurve();
 
-	primaryCurve->attach(primaryPlot);
-	primaryCurve->setPen(QPen(Qt::yellow,1));
+	primaryValueCurve=new QFlukePlotCurve();
+	primaryMaxCurve=new QFlukePlotCurve();
+	primaryMinCurve=new QFlukePlotCurve();
+	primaryAvgCurve=new QFlukePlotCurve();
+
+
+
+
+
+	primaryValueCurve->attach(primaryPlot);
+	primaryMaxCurve->attach(primaryPlot);
+	primaryMinCurve->attach(primaryPlot);
+	primaryAvgCurve->attach(primaryPlot);
+
+	primaryValueCurve->setPen(QPen(Qt::yellow,1));
+	primaryMaxCurve->setPen(QPen(Qt::red,1));
+	primaryMinCurve->setPen(QPen(Qt::blue,1));
+	primaryAvgCurve->setPen(QPen(QColor(255,255,0,255),1));
+
+	primaryValueCurve->setSymbol(QwtSymbol(QwtSymbol::XCross,QBrush(Qt::transparent),QPen(Qt::yellow,1),QSize(7,7)));
+	primaryMaxCurve->setSymbol(QwtSymbol(QwtSymbol::Triangle,QBrush(Qt::transparent),QPen(Qt::red,1),QSize(7,7)));
+	primaryMinCurve->setSymbol(QwtSymbol(QwtSymbol::DTriangle,QBrush(Qt::transparent),QPen(Qt::blue,1),QSize(7,7)));
+	primaryAvgCurve->setSymbol(QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
 
 
 
@@ -36,7 +56,7 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 
     connect(&remlog,SIGNAL(handOverSerialResponse(Fluke::Fluke189::RCT_QD0)),&remanalysis,SLOT(getFluke189_QD0(Fluke::Fluke189::RCT_QD0)));
     connect(&remanalysis,SIGNAL(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)),this,SLOT(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)));
-    connect(&remanalysis,SIGNAL(setGraph(unsigned int, Fluke::Fluke189QD0Logging::Fluke189Value_t)),this,SLOT(addPrimaryPlotValue(unsigned int, Fluke::Fluke189QD0Logging::Fluke189Value_t)));
+    connect(&remanalysis,SIGNAL(setGraph(uint,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t)),this,SLOT(addPlotValues(uint,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t)));
 
 
     connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),&remanalysis,SLOT(reset_primary(void)));

@@ -6,8 +6,8 @@ QFlukePlotCurve::QFlukePlotCurve()
 	QwtSymbol symbol;
     symbol.setPen(QPen(Qt::green));
     symbol.setBrush(Qt::transparent);
-	symbol.setStyle(QwtSymbol::DTriangle);
-	symbol.setSize(10,10);
+	symbol.setStyle(QwtSymbol::Rect);
+	symbol.setSize(4,4);
     this->setSymbol(symbol);
 }
 

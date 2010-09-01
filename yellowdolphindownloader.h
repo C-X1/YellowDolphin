@@ -45,8 +45,17 @@ public:
 
 
     QFlukePlotter * primaryPlot;
-    QFlukePlotCurve * primaryCurve;
 
+
+    QFlukePlotCurve * primaryValueCurve;
+    QFlukePlotCurve * primaryMaxCurve;
+    QFlukePlotCurve * primaryMinCurve;
+    QFlukePlotCurve * primaryAvgCurve;
+
+    QFlukePlotCurve * secondaryValueCurve;
+    QFlukePlotCurve * secondaryMaxCurve;
+    QFlukePlotCurve * secondaryMinCurve;
+    QFlukePlotCurve * secondaryAvgCurve;
 
     remoteLogThread remlog;
     remoteDataAnalysisThread remanalysis;
@@ -116,9 +125,21 @@ public slots:
 							 QString secMin,
 							 QString secMax,
 							 QString secAvg);
-	void addPrimaryPlotValue(unsigned int timeindex, Fluke::Fluke189QD0Logging::Fluke189Value_t value)
+
+	void addPlotValues(unsigned int timeindex,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t privalue,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t primax,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t primin,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t priavg,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t secvalue,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t secmax,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t secmin,
+							 Fluke::Fluke189QD0Logging::Fluke189Value_t secavg)
 	{
-		primaryCurve->addDataPoint(timeindex, value);
+		primaryValueCurve->addDataPoint(timeindex, privalue);
+		primaryMaxCurve->addDataPoint(timeindex, primax);
+		primaryMinCurve->addDataPoint(timeindex, primin);
+		//primaryAvgCurve->addDataPoint(timeindex, priavg);
 		primaryPlot->replot();
 	}
 };

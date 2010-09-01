@@ -87,7 +87,16 @@ void remoteDataAnalysisThread::analysis()
 	secAvg=QString::fromUtf8(Logger.get_Secondary_Avg_ValueAndUnit_String().c_str());
 
 	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
-	if(!Fluke::Fluke189DataResponseAnalyzer(current)[0]->hasErrorPRIdisplay())emit setGraph(current.Data()->I_Time0, this->Logger.get_Primary_Value());
+	if(!Fluke::Fluke189DataResponseAnalyzer(current)[0]->hasErrorPRIdisplay())
+		emit setGraph(current.Data()->I_Time0,
+				this->Logger.get_Primary_Value(),
+				this->Logger.get_Primary_Maximum(),
+				this->Logger.get_Primary_Minimum(),
+				this->Logger.get_Primary_Average(),
+				this->Logger.get_Secondary_Value(),
+				this->Logger.get_Secondary_Maximum(),
+				this->Logger.get_Secondary_Minimum(),
+				this->Logger.get_Secondary_Average());
 
 }
 
