@@ -45,7 +45,7 @@ public:
 
 
     QFlukePlotter * primaryPlot;
-
+    QFlukePlotter * secondaryPlot;
 
     QFlukePlotCurve * primaryValueCurve;
     QFlukePlotCurve * primaryMaxCurve;
@@ -141,6 +141,12 @@ public slots:
 		primaryMinCurve->addDataPoint(timeindex, primin);
 		//primaryAvgCurve->addDataPoint(timeindex, priavg);
 		primaryPlot->replot();
+
+		secondaryValueCurve->addDataPoint(timeindex, secvalue);
+		secondaryMaxCurve->addDataPoint(timeindex, secmax);
+		secondaryMinCurve->addDataPoint(timeindex, secmin);
+		//secondaryAvgCurve->addDataPoint(timeindex, secavg);
+		secondaryPlot->replot();
 	}
 };
 

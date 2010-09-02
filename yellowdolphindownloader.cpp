@@ -12,6 +12,9 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 
 	reset=true;
 
+
+	//primary plot
+
 	primaryPlot =new QFlukePlotter();
 	primaryPlot->setCanvasBackground(Qt::black);
 
@@ -19,10 +22,6 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	primaryMaxCurve=new QFlukePlotCurve();
 	primaryMinCurve=new QFlukePlotCurve();
 	primaryAvgCurve=new QFlukePlotCurve();
-
-
-
-
 
 	primaryValueCurve->attach(primaryPlot);
 	primaryMaxCurve->attach(primaryPlot);
@@ -40,9 +39,37 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	primaryAvgCurve->setSymbol(QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
 
 
+	//secondary plot
+
+	secondaryPlot =new QFlukePlotter();
+	secondaryPlot->setCanvasBackground(Qt::black);
+
+	secondaryValueCurve=new QFlukePlotCurve();
+	secondaryMaxCurve=new QFlukePlotCurve();
+	secondaryMinCurve=new QFlukePlotCurve();
+	secondaryAvgCurve=new QFlukePlotCurve();
+
+	secondaryValueCurve->attach(secondaryPlot);
+	secondaryMaxCurve->attach(secondaryPlot);
+	secondaryMinCurve->attach(secondaryPlot);
+	secondaryAvgCurve->attach(secondaryPlot);
+
+	secondaryValueCurve->setPen(QPen(Qt::yellow,1));
+	secondaryMaxCurve->setPen(QPen(Qt::red,1));
+	secondaryMinCurve->setPen(QPen(Qt::blue,1));
+	secondaryAvgCurve->setPen(QPen(QColor(255,255,0,255),1));
+
+	secondaryValueCurve->setSymbol(QwtSymbol(QwtSymbol::XCross,QBrush(Qt::transparent),QPen(Qt::yellow,1),QSize(7,7)));
+	secondaryMaxCurve->setSymbol(QwtSymbol(QwtSymbol::Triangle,QBrush(Qt::transparent),QPen(Qt::red,1),QSize(7,7)));
+	secondaryMinCurve->setSymbol(QwtSymbol(QwtSymbol::DTriangle,QBrush(Qt::transparent),QPen(Qt::blue,1),QSize(7,7)));
+	secondaryAvgCurve->setSymbol(QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
+
+
 
 
 	ui.verticalLayout_VP->addWidget(primaryPlot);
+	ui.verticalLayout_VP->addWidget(secondaryPlot);
+
 
 //	ui.verticalLayout_VP->addWidget(FlukeVPPri);
 //	ui.verticalLayout_VP->addWidget(FlukeVPSec);
