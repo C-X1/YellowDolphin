@@ -2,11 +2,16 @@
 #define YELLOWDOLPHINDOWNLOADER_H
 
 #include <QtGui/QWidget>
-#include <qmessagebox.h>
+#include <QVector>
+#include <QPainter>
+#include <QImage>
+#include <QMessageBox>
+
 #include <iostream>
 #include <dirent.h>
 #include <fstream>
 #include <sstream>
+
 #include "ui_yellowdolphindownloader.h"
 #include "CalTime.hpp"
 #include "Fluke189.hpp"
@@ -25,10 +30,8 @@
 #include <qwt-qt4/qwt_legend.h>
 #include <qwt-qt4/qwt_scale_draw.h>
 #include <qwt-qt4/qwt_math.h>
-#include <QVector>
 
-#include <QPainter>
-#include <QImage>
+
 
 #include "QFlukePlotter/QFlukePlotter.hpp"
 #include "QFlukePlotter/qflukeplotcurve.h"
@@ -65,22 +68,7 @@ private:
     Ui::YellowDolphinDownloaderClass ui;
     void refresh_interfaces_list();
 
-    /*Initialized*/
-    bool reset;
 
-    /*Variable to hold begining timestamp*/
-    unsigned int begintime;
-
-    /*Current Prefix*/
-    int currentPre;
-
-    /*Current value*/
-    qreal currentVal;
-
-    /*Current Time*/
-    qreal currentTime;
-
-    QVector<double> xprimV, yprimV;
 
 
 public:
@@ -90,7 +78,6 @@ public:
 
     	currentclass->progress_bar(current_byte, byte_amount);
     }
-
 
     void progress_bar(unsigned int current_byte, unsigned int byte_amount)
     {
@@ -126,7 +113,7 @@ public slots:
 							 QString secMax,
 							 QString secAvg);
 
-	void addPlotValues(unsigned int timeindex,
+	void addPlotValues(unsigned int pritimeindex, unsigned int sectimeindex,
 							 Fluke::Fluke189QD0Logging::Fluke189Value_t privalue,
 							 Fluke::Fluke189QD0Logging::Fluke189Value_t primax,
 							 Fluke::Fluke189QD0Logging::Fluke189Value_t primin,
@@ -136,18 +123,21 @@ public slots:
 							 Fluke::Fluke189QD0Logging::Fluke189Value_t secmin,
 							 Fluke::Fluke189QD0Logging::Fluke189Value_t secavg)
 	{
-		primaryValueCurve->addDataPoint(timeindex, privalue);
-		primaryMaxCurve->addDataPoint(timeindex, primax);
-		primaryMinCurve->addDataPoint(timeindex, primin);
-		//primaryAvgCurve->addDataPoint(timeindex, priavg);
+		primaryValueCurve->addDataPoint(pritimeindex, privalue);
+		primaryMaxCurve->addDataPoint(pritimeindex, primax);
+		primaryMinCurve->addDataPoint(pritimeindex, primin);
+		//primaryAvgCurve->addDataPoint(pritimeindex, priavg);
 		primaryPlot->replot();
 
-		secondaryValueCurve->addDataPoint(timeindex, secvalue);
-		secondaryMaxCurve->addDataPoint(timeindex, secmax);
-		secondaryMinCurve->addDataPoint(timeindex, secmin);
-		//secondaryAvgCurve->addDataPoint(timeindex, secavg);
+		secondaryValueCurve->addDataPoint(sectimeindex, secvalue);
+		secondaryMaxCurve->addDataPoint(sectimeindex, secmax);
+		secondaryMinCurve->addDataPoint(sectimeindex, secmin);
+		//secondaryAvgCurve->addDataPoint(sectimeindex, secavg);
 		secondaryPlot->replot();
 	}
+
+	void reset_primary_plot();
+	void reset_secondary_plot();
 };
 
 

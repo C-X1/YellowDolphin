@@ -52,7 +52,6 @@ void QFlukeCanvasEventFilter::ResizeHandler(QResizeEvent * event)
 
 }
 
-
 void QFlukeCanvasEventFilter::showContextMenu(QContextMenuEvent * event)
 {
     QMenu menu;
@@ -61,8 +60,7 @@ void QFlukeCanvasEventFilter::showContextMenu(QContextMenuEvent * event)
     menu.exec(event->globalPos());
 
   //Actions must be done as a class variable and connected like this:
-  //  connect(printAct, SIGNAL(triggered()), this, SLOT(print()));
-
+  //connect(printAct, SIGNAL(triggered()), this, SLOT(print()));
 }
 
 bool QFlukeCanvasEventFilter::MousePressHandler(QMouseEvent *event)
@@ -87,15 +85,11 @@ QFlukePlotter::QFlukePlotter(QWidget *parent)
 	this->setAxisTitle(2,"Time [s]");
 	QFlukeCanvasEventFilter * CanvasEventFilter=new QFlukeCanvasEventFilter(this);
 	//this->canvas()->installEventFilter(CanvasEventFilter);
-
-
-
 }
 
 
 
 //Slots
-
 void QFlukeCanvasEventFilter::resetToAutoScale()
 {
 	plotter->setAxisAutoScale(0);
@@ -103,13 +97,10 @@ void QFlukeCanvasEventFilter::resetToAutoScale()
 	plotter->replot();
 }
 
-
-
 QFlukePlotter::~QFlukePlotter()
 {
 
 }
-
 
 void QFlukePlotter::clear()
 {

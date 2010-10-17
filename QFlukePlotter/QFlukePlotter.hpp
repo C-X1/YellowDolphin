@@ -31,6 +31,8 @@ class QFlukeCanvasEventFilter : public QwtPlotPicker
 	QwtScaleWidget * scale;
 	QwtPlotZoomer * zoomer;
 
+
+
 public:
 	QFlukeCanvasEventFilter(QFlukePlotter *parent);
 	~QFlukeCanvasEventFilter()

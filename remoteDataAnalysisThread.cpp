@@ -27,7 +27,7 @@ void remoteDataAnalysisThread::run()
 	connect(timer_analysis, SIGNAL(timeout()),this,SLOT(analysis()));
 	//Start it with calling the function each 500 ms,
 	//should be enough because the multimeter is only
-	//capable of sending 2 data sets each secs
+	//capable of sending 2 data sets each sec
 	timer_analysis->start(500);
 	exec();
 }
@@ -60,7 +60,10 @@ void remoteDataAnalysisThread::analysis()
 	}
 
 
-	if(pReset) Logger.reset_primary();
+	if(pReset)
+	{
+		Logger.reset_primary();
+	}
 	if(sReset) Logger.reset_secondary();
 
 
@@ -88,7 +91,7 @@ void remoteDataAnalysisThread::analysis()
 
 	emit updateCurrentValues(priValue,priMin,priMax,priAvg,secValue,secMin,secMax,secAvg);
 	if(!Fluke::Fluke189DataResponseAnalyzer(current)[0]->hasErrorPRIdisplay())
-		emit setGraph(current.Data()->I_Time0,
+		emit setGraph(current.Data()->I_Time0, current.Data()->I_Time1,
 				this->Logger.get_Primary_Value(),
 				this->Logger.get_Primary_Maximum(),
 				this->Logger.get_Primary_Minimum(),
@@ -117,10 +120,12 @@ void remoteDataAnalysisThread::reset_primary()
 	lock.lockForWrite();
 		pReset=true;
 	lock.unlock();
+	emit primary_reset();
 }
 void remoteDataAnalysisThread::reset_secondary()
 {
 	lock.lockForWrite();
 		sReset=true;
 	lock.unlock();
+	emit secondary_reset();
 }

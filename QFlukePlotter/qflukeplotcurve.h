@@ -4,6 +4,7 @@
 #include <QtGui/QWidget>
 #include "QFlukePlotter.hpp"
 #include <QVector>
+#include <qreadwritelock.h>
 
 #include <qwt-qt4/qwt_plot_curve.h>
 #include <qwt-qt4/qwt_painter.h>
@@ -21,14 +22,15 @@
 
 class QFlukePlotCurve : public QwtPlotCurve
 {
+	friend class QFlukePlotter;
 
 private:
 
 	int currentPrefix;
 	unsigned int startvalue;
 
+	QReadWriteLock rwLock;
 
-	QwtPlotCurve * points;
 
     QVector<double>timestamps;
     QVector<double>values;
@@ -36,13 +38,6 @@ private:
 public:
     QFlukePlotCurve();
     ~QFlukePlotCurve();
-
-//    void attach(QwtPlot * plot)
-//    {
-//    	this->QwtPlotCurve::attach(plot);
-//    	this->points->attach(plot);
-//    }
-
 
 
     /**
@@ -52,7 +47,7 @@ public:
      */
     void addDataPoint(unsigned int timestamp, Fluke::Fluke189QD0Logging::Fluke189Value_t value)
     {
-	   	if(!this->timestamps.count())
+    	if(!this->timestamps.count())
     	{
 	   		currentPrefix=value.Prefix;
     		values.clear();
@@ -68,8 +63,10 @@ public:
      */
     void clearData()
     {
-    	values.clear();
-    	timestamps.clear();
+		values.clear();
+		timestamps.clear();
+    	this->setRawData(timestamps.data(),values.data(),values.size());
+    	std::cout<<values.size()<<" dd dd dd dd dd "<<std::endl;
     }
 
 

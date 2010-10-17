@@ -56,7 +56,8 @@ signals:
 							 QString secMin,
 							 QString secMax,
 							 QString secAvg);
-	void setGraph(unsigned int timeindex, Fluke::Fluke189QD0Logging::Fluke189Value_t value,
+	void setGraph(unsigned int priTimeIndex, unsigned int secTimeIndex,
+			 Fluke::Fluke189QD0Logging::Fluke189Value_t value,
 			 Fluke::Fluke189QD0Logging::Fluke189Value_t primax,
 			 Fluke::Fluke189QD0Logging::Fluke189Value_t primin,
 			 Fluke::Fluke189QD0Logging::Fluke189Value_t priavg,
@@ -65,11 +66,15 @@ signals:
 			 Fluke::Fluke189QD0Logging::Fluke189Value_t secmin,
 			 Fluke::Fluke189QD0Logging::Fluke189Value_t secavg);
 
+signals:
+	void primary_reset();
+	void secondary_reset();
 
 public slots:
 	void getFluke189_QD0(Fluke::Fluke189::RCT_QD0 container);
 	void reset_primary();
 	void reset_secondary();
+
 private slots:
 	void analysis();
 

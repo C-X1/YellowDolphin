@@ -7,10 +7,13 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	ui.setupUi(this);
 	this->refresh_interfaces_list();
 
+	//Register Type for slot/signal usage
 
+	int i= qRegisterMetaType<Fluke::Fluke189::RCT_QD0>();
+	std::cout<<"Reg:"<<i<<std::endl;
+	i=qRegisterMetaType<Fluke::Fluke189QD0Logging::Fluke189Value_t>();
+	std::cout<<"Reg:"<<i<<std::endl;
 
-
-	reset=true;
 
 
 	//primary plot
@@ -65,25 +68,22 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	secondaryAvgCurve->setSymbol(QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
 
 
-
+	//Adding plots to window
 
 	ui.verticalLayout_VP->addWidget(primaryPlot);
 	ui.verticalLayout_VP->addWidget(secondaryPlot);
 
-
-//	ui.verticalLayout_VP->addWidget(FlukeVPPri);
-//	ui.verticalLayout_VP->addWidget(FlukeVPSec);
+	//Connections
 
 	connect(this->ui.interfacesCombo,SIGNAL(editTextChanged(QString)),&remlog,SLOT(setInterface(QString)));
 
-	int i= qRegisterMetaType<Fluke::Fluke189::RCT_QD0>();
-	std::cout<<"Reg:"<<i<<std::endl;
-	i=qRegisterMetaType<Fluke::Fluke189QD0Logging::Fluke189Value_t>();
-	std::cout<<"Reg:"<<i<<std::endl;
-
     connect(&remlog,SIGNAL(handOverSerialResponse(Fluke::Fluke189::RCT_QD0)),&remanalysis,SLOT(getFluke189_QD0(Fluke::Fluke189::RCT_QD0)));
     connect(&remanalysis,SIGNAL(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)),this,SLOT(updateCurrentValues(QString,QString,QString,QString,QString,QString,QString,QString)));
-    connect(&remanalysis,SIGNAL(setGraph(uint,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t)),this,SLOT(addPlotValues(uint,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t)));
+    connect(&remanalysis,SIGNAL(setGraph(uint,uint,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t)),this,SLOT(addPlotValues(uint,uint,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t,Fluke::Fluke189QD0Logging::Fluke189Value_t)));
+
+
+    connect(&remanalysis,SIGNAL(primary_reset()), this, SLOT(reset_primary_plot()));
+    connect(&remanalysis,SIGNAL(secondary_reset()), this, SLOT(reset_secondary_plot()));
 
 
     connect(this->ui.pushButton_ResetPri,SIGNAL(clicked(void)),&remanalysis,SLOT(reset_primary(void)));
@@ -113,7 +113,6 @@ YellowDolphinDownloader::~YellowDolphinDownloader()
 	remlog.wait();
 	remanalysis.wait();
 }
-
 
 void YellowDolphinDownloader::refresh_interfaces_list()
 {
@@ -150,9 +149,6 @@ void YellowDolphinDownloader::refresh_interfaces_list()
 
 //SLOTS
 
-
-
-
 void YellowDolphinDownloader::on_searchmultimeter_clicked()
 {
 	Fluke::Fluke189 FlukeMM(ui.interfacesCombo->currentText().toStdString());
@@ -170,14 +166,10 @@ void YellowDolphinDownloader::on_searchmultimeter_clicked()
 	}
 }
 
-
-
 void YellowDolphinDownloader::on_refreshInterfacesBut_clicked()
 {
 	refresh_interfaces_list();
 }
-
-
 
 void YellowDolphinDownloader::on_downloadButton_clicked()
 {
@@ -289,3 +281,22 @@ void YellowDolphinDownloader::updateCurrentValues(QString priValue,
 	this->ui.label_secMax->setText(secMax);
 	this->ui.label_secAverage->setText(secAvg);
 }
+
+void YellowDolphinDownloader::reset_primary_plot()
+{
+	this->primaryValueCurve->clearData();
+	this->primaryMinCurve->clearData();
+	this->primaryMaxCurve->clearData();
+	this->primaryAvgCurve->clearData();
+	this->primaryPlot->replot();
+}
+
+void YellowDolphinDownloader::reset_secondary_plot()
+{
+	this->secondaryValueCurve->clearData();
+	this->secondaryMinCurve->clearData();
+	this->secondaryMaxCurve->clearData();
+	this->secondaryAvgCurve->clearData();
+	this->secondaryPlot->replot();
+}
+
