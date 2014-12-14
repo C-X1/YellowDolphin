@@ -1,16 +1,17 @@
 #ifndef QFLUKEPLOTTER_H
 #define QFLUKEPLOTTER_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QWheelEvent>
 #include <QScrollBar>
-#include <qwt-qt4/qwt_plot.h>
-#include <qwt-qt4/qwt_scale_div.h>
-#include <qwt-qt4/qwt_plot_canvas.h>
-#include <qwt-qt4/qwt_scale_widget.h>
-#include <qwt-qt4/qwt_plot_layout.h>
-#include <qwt-qt4/qwt_plot_zoomer.h>
-#include <qwt-qt4/qwt_plot_picker.h>
+#include <qwt/qwt_plot.h>
+#include <qwt/qwt_scale_div.h>
+#include <qwt/qwt_plot_canvas.h>
+#include <qwt/qwt_scale_widget.h>
+#include <qwt/qwt_plot_layout.h>
+#include <qwt/qwt_plot_zoomer.h>
+#include <qwt/qwt_plot_picker.h>
+#include <qwt/qwt.h>
 
 #include <QMenu>
 #include <QAction>
@@ -84,10 +85,10 @@ protected:
 
 
 
-	void tellselection(QwtDoublePoint tpnt)
-	{
-		std::cout<<"tellselect"<<std::endl;
-	}
+//	void tellselection(QwtDoublePoint tpnt)
+//	{
+//		std::cout<<"tellselect"<<std::endl;
+//	}
 
 };
 

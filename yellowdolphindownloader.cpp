@@ -36,10 +36,10 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	primaryMinCurve->setPen(QPen(Qt::blue,1));
 	primaryAvgCurve->setPen(QPen(QColor(255,255,0,255),1));
 
-	primaryValueCurve->setSymbol(QwtSymbol(QwtSymbol::XCross,QBrush(Qt::transparent),QPen(Qt::yellow,1),QSize(7,7)));
-	primaryMaxCurve->setSymbol(QwtSymbol(QwtSymbol::Triangle,QBrush(Qt::transparent),QPen(Qt::red,1),QSize(7,7)));
-	primaryMinCurve->setSymbol(QwtSymbol(QwtSymbol::DTriangle,QBrush(Qt::transparent),QPen(Qt::blue,1),QSize(7,7)));
-	primaryAvgCurve->setSymbol(QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
+    primaryValueCurve->setSymbol(new QwtSymbol(QwtSymbol::XCross,QBrush(Qt::transparent),QPen(Qt::yellow,1),QSize(7,7)));
+    primaryMaxCurve->setSymbol(new QwtSymbol(QwtSymbol::Triangle,QBrush(Qt::transparent),QPen(Qt::red,1),QSize(7,7)));
+    primaryMinCurve->setSymbol(new QwtSymbol(QwtSymbol::DTriangle,QBrush(Qt::transparent),QPen(Qt::blue,1),QSize(7,7)));
+    primaryAvgCurve->setSymbol(new QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
 
 
 	//secondary plot
@@ -62,10 +62,10 @@ YellowDolphinDownloader::YellowDolphinDownloader(QWidget *parent)
 	secondaryMinCurve->setPen(QPen(Qt::blue,1));
 	secondaryAvgCurve->setPen(QPen(QColor(255,255,0,255),1));
 
-	secondaryValueCurve->setSymbol(QwtSymbol(QwtSymbol::XCross,QBrush(Qt::transparent),QPen(Qt::yellow,1),QSize(7,7)));
-	secondaryMaxCurve->setSymbol(QwtSymbol(QwtSymbol::Triangle,QBrush(Qt::transparent),QPen(Qt::red,1),QSize(7,7)));
-	secondaryMinCurve->setSymbol(QwtSymbol(QwtSymbol::DTriangle,QBrush(Qt::transparent),QPen(Qt::blue,1),QSize(7,7)));
-	secondaryAvgCurve->setSymbol(QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
+    secondaryValueCurve->setSymbol(new QwtSymbol(QwtSymbol::XCross,QBrush(Qt::transparent),QPen(Qt::yellow,1),QSize(7,7)));
+    secondaryMaxCurve->setSymbol(new QwtSymbol(QwtSymbol::Triangle,QBrush(Qt::transparent),QPen(Qt::red,1),QSize(7,7)));
+    secondaryMinCurve->setSymbol(new QwtSymbol(QwtSymbol::DTriangle,QBrush(Qt::transparent),QPen(Qt::blue,1),QSize(7,7)));
+    secondaryAvgCurve->setSymbol(new QwtSymbol(QwtSymbol::Diamond,QBrush(Qt::transparent),QPen(QColor(255,255,0,100),1),QSize(7,7)));
 
 
 	//Adding plots to window

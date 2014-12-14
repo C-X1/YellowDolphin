@@ -1,7 +1,8 @@
 TEMPLATE = app
 TARGET = YellowDolphinDownloader
 QT += core \
-    gui
+    gui \
+    widgets
 HEADERS += QFlukePlotter/qflukeplotcurve.h \
     QFlukePlotter/QFlukePlotter.hpp \
     QFlukeValueMetaType.h \
@@ -19,8 +20,8 @@ FORMS += yellowdolphindownloader.ui
 INCLUDEPATH += ../LibFluke/src \
     ../LibSerialDevice/src \
     ../LibCalTime/src \
-    ../usr/include/qwt-qt4
-LIBS += /usr/lib/libqwt-qt4.so \
+    ../usr/include/qwt
+LIBS += -lqwt \
     ../LibFluke/Debug/libFluke.so \
     ../LibCalTime/Debug/libCalTime.so \
     ../LibSerialDevice/Debug/libSerialDevice.so

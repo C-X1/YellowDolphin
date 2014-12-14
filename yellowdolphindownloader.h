@@ -1,7 +1,7 @@
 #ifndef YELLOWDOLPHINDOWNLOADER_H
 #define YELLOWDOLPHINDOWNLOADER_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QVector>
 #include <QPainter>
 #include <QImage>
@@ -20,16 +20,16 @@
 #include "remoteLogThread.h"
 #include "remoteDataAnalysisThread.h"
 
-#include <qwt-qt4/qwt_plot.h>
-#include <qwt-qt4/qwt_plot_curve.h>
-#include <qwt-qt4/qwt_painter.h>
-#include <qwt-qt4/qwt_plot_canvas.h>
-#include <qwt-qt4/qwt_plot_marker.h>
-#include <qwt-qt4/qwt_plot_curve.h>
-#include <qwt-qt4/qwt_scale_widget.h>
-#include <qwt-qt4/qwt_legend.h>
-#include <qwt-qt4/qwt_scale_draw.h>
-#include <qwt-qt4/qwt_math.h>
+#include <qwt/qwt.h>
+#include <qwt/qwt_plot_curve.h>
+#include <qwt/qwt_painter.h>
+#include <qwt/qwt_plot_canvas.h>
+#include <qwt/qwt_plot_marker.h>
+#include <qwt/qwt_plot_curve.h>
+#include <qwt/qwt_scale_widget.h>
+#include <qwt/qwt_legend.h>
+#include <qwt/qwt_scale_draw.h>
+#include <qwt/qwt_math.h>
 
 
 

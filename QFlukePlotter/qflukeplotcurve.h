@@ -1,21 +1,21 @@
 #ifndef QFLUKEPLOTCURVE_H
 #define QFLUKEPLOTCURVE_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "QFlukePlotter.hpp"
 #include <QVector>
 #include <qreadwritelock.h>
 
-#include <qwt-qt4/qwt_plot_curve.h>
-#include <qwt-qt4/qwt_painter.h>
-#include <qwt-qt4/qwt_plot_canvas.h>
-#include <qwt-qt4/qwt_plot_marker.h>
-#include <qwt-qt4/qwt_plot_curve.h>
-#include <qwt-qt4/qwt_scale_widget.h>
-#include <qwt-qt4/qwt_legend.h>
-#include <qwt-qt4/qwt_scale_draw.h>
-#include <qwt-qt4/qwt_math.h>
-#include <qwt-qt4/qwt_symbol.h>
+#include <qwt/qwt_plot_curve.h>
+#include <qwt/qwt_painter.h>
+#include <qwt/qwt_plot_canvas.h>
+#include <qwt/qwt_plot_marker.h>
+#include <qwt/qwt_plot_curve.h>
+#include <qwt/qwt_scale_widget.h>
+#include <qwt/qwt_legend.h>
+#include <qwt/qwt_scale_draw.h>
+#include <qwt/qwt_math.h>
+#include <qwt/qwt_symbol.h>
 
 
 #include <iostream> //TODO delete
@@ -55,7 +55,8 @@ public:
     	}
     	timestamps.push_back((double)(timestamp-startvalue)/10);
     	values.push_back((value.Value/pow(10,value.Decimal))/pow(10,(currentPrefix-value.Prefix)*3));
-    	this->setRawData(timestamps.data(),values.data(),values.size());
+       // this->setRawData(timestamps.data(),values.data(),values.size());
+        this->setRawSamples(timestamps.data(),values.data(),values.size());
     }
 
     /**
@@ -65,7 +66,9 @@ public:
     {
 		values.clear();
 		timestamps.clear();
-    	this->setRawData(timestamps.data(),values.data(),values.size());
+        //this->setRawData(timestamps.data(),values.data(),values.size());
+        this->setRawSamples(timestamps.data(),values.data(),values.size());
+
     	std::cout<<values.size()<<" dd dd dd dd dd "<<std::endl;
     }
 

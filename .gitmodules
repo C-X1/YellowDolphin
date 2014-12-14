@@ -1,0 +1,12 @@
+[submodule "libFluke"]
+	path = libFluke
+	url = git@github.com:cyborg-x1/LibFluke.git
+[submodule "LibCalTime"]
+	path = LibCalTime
+	url = git@github.com:cyborg-x1/LibCalTime.git
+[submodule "libCalTime"]
+	path = libCalTime
+	url = git@github.com:cyborg-x1/LibCalTime.git
+[submodule "libSerialDevice"]
+	path = libSerialDevice
+	url = git@github.com:cyborg-x1/LibSerialDevice.git
